@@ -1,4 +1,4 @@
-# Seller’s Social Media 
+# Seller’s Social Media - SellerPrism
 
 ## Nama Anggota Kelompok
 Amanda Nadhifah Zahra Andini - *2106637246*
@@ -16,17 +16,17 @@ Rangga Yudhistira Brata - *2106751051*
 Vinsensius Ferdinando - *2106751221*
 
 ## Nama Aplikasi  
-:sparkles::sparkles::sparkles: **Seller’s Social Media** :sparkles::sparkles::sparkles:
+:sparkles::sparkles::sparkles: **Seller’s Social Media (SellerPrism.io)** :sparkles::sparkles::sparkles:
 
 
 ## Latar Belakang dan Cerita Aplikasi
-<p align="justify">
+
 Secara garis besar, aplikasi yang kami kerjakan merupakan sebuah media sosial yang, notabenenya, menjadi sebuah sarana pertemuan dari pembeli dan penjual. Layaknya sebuah media sosial, aplikasi kami tidak melayani pembelian barang secara langsung melainkan, mempertemukan pembeli dan penjual dengan memberikan informasi penjual kepada pembeli. Hal tersebut dilakukan agar pembeli dapat melakukan pembelian dengan memberikan penawaran harga yang, secara garis besar, tidak dapat dilakukan pada sebuah platform belanja. Dengan menghubungi secara pribadi, pembeli dapat berbincang dengan penjual melalui kontak yang ditunjukan pada aplikasi. 
 
 Untuk mempertemukan pembeli dan penjual yang cocok atau sesuai dengan kriteria barang yang dibeli, maka terdapat fitur pemisahan toko berdasarkan kategori yang ada. Dengan begitu, pembeli dapat memilih toko yang ingin mereka hubungi berdasarkan kebutuhan dan barang yang ingin dibeli.
 
 Dalam aplikasi ini, hanya terdapat dua peran pengguna. Pertama, pengguna yang berperan sebagai pembeli. Pengguna yang berperan sebagai pembeli hanya dapat melihat toko yang ada di masing-masing kategori. Kedua, user yang bertindak sebagai penjual yang dapat mengganti profil yang ia miliki guna mengubah kontak atau nama toko milik mereka yang ditampilkan pada page masing-masing kategori. Seluruh user yang mengakses aplikasi diharuskan untuk sign in terlebih dahulu guna mendapatkan role yang dimiliki.
-</p>
+
 
 ## Daftar Fitur
 :closed_lock_with_key::closed_lock_with_key::closed_lock_with_key: **Sign in / Sign up** :closed_lock_with_key::closed_lock_with_key::closed_lock_with_key: 
