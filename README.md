@@ -26,31 +26,38 @@ Untuk mempertemukan pembeli dan penjual yang cocok atau sesuai dengan kriteria b
 Dalam aplikasi ini, hanya terdapat dua peran pengguna. Pertama, pengguna yang berperan sebagai pembeli. Pengguna yang berperan sebagai pembeli hanya dapat melihat toko yang ada di masing-masing kategori. Kedua, user yang bertindak sebagai penjual yang dapat mengganti profil yang ia miliki guna mengubah kontak atau nama toko milik mereka yang ditampilkan pada page masing-masing kategori. Seluruh user yang mengakses aplikasi diharuskan untuk sign in terlebih dahulu guna mendapatkan role yang dimiliki.
 
 ## Daftar Fitur
-:closed_lock_with_key::closed_lock_with_key::closed_lock_with_key: **Sign in / Sign up** :closed_lock_with_key::closed_lock_with_key::closed_lock_with_key: *(Implementasi Sign Up / Sign In akan dikerjakan oleh Rangga Yudhistira Brata)*
+:closed_lock_with_key::closed_lock_with_key::closed_lock_with_key: **Sign in / Sign up** :closed_lock_with_key::closed_lock_with_key::closed_lock_with_key: 
+*(Implementasi Sign Up / Sign In akan dikerjakan oleh Rangga Yudhistira Brata)*
 
 Fitur ini merupakan fitur awal yang memungkinkan user untuk mendaftar dan masuk sebagai user yang memiliki role sesuai dengan kedua role yang telah disebutkan sebelumnya. Fitur ini mendaftarkan user ke database apabila user sign up, dan melakukan get data dan mencocokan kepada credential yang dimasukkan user saat sign in. Apabila data benar, maka user dapat sign in dengan baik.
 
-:sunny::sunny::sunny: **Homepage** :sunny::sunny::sunny: *(Implementasi Homepage akan dikerjakan oleh Vinsensius Ferdinando)*
+:sunny::sunny::sunny: **Homepage** :sunny::sunny::sunny: 
+*(Implementasi Homepage akan dikerjakan oleh Vinsensius Ferdinando)*
 
 Fitur ini merupakan landing page dari aplikasi. Dengan adanya home page ini, aplikasi dapat menunjukan identitas aplikasi itu sendiri. Selain itu, home page juga akan memiliki beberapa button yang memungkinkan user untuk melihat kategori yang ditawarkan, pindah ke page FAQ, dan pindah ke page Forum. Selain itu, terdapat fitur search toko yang memungkinkan user untuk mencari toko sesuai dengan nama yang dimasukkan ke input pencarian tersebut.
 
-:cd::cd::cd: **Menampilkan Kategori** :cd::cd::cd:  *(Implementasi Menampilkan Kategori akan dikerjakan oleh Annisa Az Zahra)*
+:cd::cd::cd: **Menampilkan Kategori** :cd::cd::cd:  
+*(Implementasi Menampilkan Kategori akan dikerjakan oleh Annisa Az Zahra)*
 
 Fitur ini menampilkan kategori yang ada di aplikasi ini. Kategori ditampilkan bersamaan dengan sedikit pengenalan kategori (Introduction) dan juga sebuah button untuk menuju ke page yang berisikan toko-toko yang berada di dalam kategori tersebut.
 
-:telephone::telephone::telephone: **Menampilkan Toko** :telephone::telephone::telephone: *(Implementasi Menampilkan Toko akan dikerjakan oleh Amanda Nadhifah Zahra Andini)*
+:telephone::telephone::telephone: **Menampilkan Toko** :telephone::telephone::telephone: 
+*(Implementasi Menampilkan Toko akan dikerjakan oleh Amanda Nadhifah Zahra Andini)*
 
 Fitur ini menampilkan seluruh toko yang ada di dalam kategori yang dipilih oleh user. Dengan adanya fitur ini, user dapat menghubungi toko yang dinilai menarik minat membelinya dengan menghubungi kontak toko yang tersedia di setiap card atau pilihan toko.
 
-:smile::smile::smile: **Mengubah Profile** :smile::smile::smile:  *(Implementasi Mengubah Profile akan dikerjakan oleh Caroline Esther Ulibasa Panggabean)*
+:smile::smile::smile: **Mengubah Profile** :smile::smile::smile:  
+*(Implementasi Mengubah Profile akan dikerjakan oleh Caroline Esther Ulibasa Panggabean)*
 
 Fitur ini mengubah profil dari user yang sedang login. Fitur ini dapat dilihat implementasinya dengan lebih jelas pada saat user yang sedang login merupakan penjual karena perubahan nama toko atau kontak yang dapat dihubungi dapat terlihat dengan jelas.
 
-:grey_question::grey_question::grey_question: **FAQ** :grey_question::grey_question::grey_question: *(Implementasi FAQ akan dikerjakan oleh Rakan Fasya Athhar Rayyan)*
+:grey_question::grey_question::grey_question: **FAQ** :grey_question::grey_question::grey_question: 
+*(Implementasi FAQ akan dikerjakan oleh Rakan Fasya Athhar Rayyan)*
 
 Fitur ini akan menampilkan seluruh pertanyaan yang sering ditanyakan oleh user. Fitur ini sendiri akan memiliki satu page secara eksklusif yang dapat diakses oleh user dengan menekan tombol yang ada di home page.
 
-:checkered_flag::checkered_flag::checkered_flag: **Forum** :checkered_flag::checkered_flag::checkered_flag: *(Implementasi Forum akan dikerjakan oleh Jihan Hanifah Yasmin)*
+:checkered_flag::checkered_flag::checkered_flag: **Forum** :checkered_flag::checkered_flag::checkered_flag: 
+*(Implementasi Forum akan dikerjakan oleh Jihan Hanifah Yasmin)*
 
 Fitur ini akan menjadi sebuah forum tanya jawab yang dapat dimanfaatkan oleh user. Fitur ini sendiri akan memiliki satu page secara eksklusif yang dapat diakses oleh user dengan menekan tombol yang ada di home page.
 
