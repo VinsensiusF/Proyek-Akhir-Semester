@@ -27,11 +27,13 @@ Dalam aplikasi ini, hanya terdapat dua peran pengguna. Pertama, pengguna yang be
 
 ## Daftar Fitur
 :closed_lock_with_key::closed_lock_with_key::closed_lock_with_key: **Sign in / Sign up** :closed_lock_with_key::closed_lock_with_key::closed_lock_with_key: 
+
 *(Implementasi Sign Up / Sign In akan dikerjakan oleh Rangga Yudhistira Brata)*
 
 Fitur ini merupakan fitur awal yang memungkinkan user untuk mendaftar dan masuk sebagai user yang memiliki role sesuai dengan kedua role yang telah disebutkan sebelumnya. Fitur ini mendaftarkan user ke database apabila user sign up, dan melakukan get data dan mencocokan kepada credential yang dimasukkan user saat sign in. Apabila data benar, maka user dapat sign in dengan baik.
 
 :sunny::sunny::sunny: **Homepage** :sunny::sunny::sunny: 
+
 *(Implementasi Homepage akan dikerjakan oleh Vinsensius Ferdinando)*
 
 Fitur ini merupakan landing page dari aplikasi. Dengan adanya home page ini, aplikasi dapat menunjukan identitas aplikasi itu sendiri. Selain itu, home page juga akan memiliki beberapa button yang memungkinkan user untuk melihat kategori yang ditawarkan, pindah ke page FAQ, dan pindah ke page Forum. Selain itu, terdapat fitur search toko yang memungkinkan user untuk mencari toko sesuai dengan nama yang dimasukkan ke input pencarian tersebut.
