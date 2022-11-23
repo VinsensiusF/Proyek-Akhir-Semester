@@ -1,4 +1,4 @@
-# Seller’s Social Media
+# Seller’s Social Media 
 
 ## Nama Anggota Kelompok
 Amanda Nadhifah Zahra Andini - 2106637246
@@ -10,7 +10,7 @@ Rangga Yudhistira Brata - 2106751051
 Vinsensius Ferdinando - 2106751221
 
 ## Nama Aplikasi  
-**Seller’s Social Media**
+:sparkles::sparkles::sparkles: **Seller’s Social Media** :sparkles::sparkles::sparkles:
 
 ## Latar Belakang dan Cerita Aplikasi
 Secara garis besar, aplikasi yang kami kerjakan merupakan sebuah media sosial yang, notabenenya, menjadi sebuah sarana pertemuan dari pembeli dan penjual. Layaknya sebuah media sosial, aplikasi kami tidak melayani pembelian barang secara langsung melainkan, mempertemukan pembeli dan penjual dengan memberikan informasi penjual kepada pembeli. Hal tersebut dilakukan agar pembeli dapat melakukan pembelian dengan memberikan penawaran harga yang, secara garis besar, tidak dapat dilakukan pada sebuah platform belanja. Dengan menghubungi secara pribadi, pembeli dapat berbincang dengan penjual melalui kontak yang ditunjukan pada aplikasi. 
@@ -21,24 +21,31 @@ Dalam aplikasi ini, hanya terdapat dua peran pengguna. Pertama, pengguna yang be
 
 ## Daftar Fitur
 **Sign in / Sign up**  *(Implementasi Sign Up / Sign In akan dikerjakan oleh Rangga Yudhistira Brata)*
+
 Fitur ini merupakan fitur awal yang memungkinkan user untuk mendaftar dan masuk sebagai user yang memiliki role sesuai dengan kedua role yang telah disebutkan sebelumnya. Fitur ini mendaftarkan user ke database apabila user sign up, dan melakukan get data dan mencocokan kepada credential yang dimasukkan user saat sign in. Apabila data benar, maka user dapat sign in dengan baik.
 
-** Homepage**  *(Implementasi Homepage akan dikerjakan oleh Vinsensius Ferdinando)*
+**Homepage**  *(Implementasi Homepage akan dikerjakan oleh Vinsensius Ferdinando)*
+
 Fitur ini merupakan landing page dari aplikasi. Dengan adanya home page ini, aplikasi dapat menunjukan identitas aplikasi itu sendiri. Selain itu, home page juga akan memiliki beberapa button yang memungkinkan user untuk melihat kategori yang ditawarkan, pindah ke page FAQ, dan pindah ke page Forum. Selain itu, terdapat fitur search toko yang memungkinkan user untuk mencari toko sesuai dengan nama yang dimasukkan ke input pencarian tersebut.
 
-** Menampilkan Kategori**   *(Implementasi Menampilkan Kategori akan dikerjakan oleh Annisa Az Zahra)*
+**Menampilkan Kategori**   *(Implementasi Menampilkan Kategori akan dikerjakan oleh Annisa Az Zahra)*
+
 Fitur ini menampilkan kategori yang ada di aplikasi ini. Kategori ditampilkan bersamaan dengan sedikit pengenalan kategori (Introduction) dan juga sebuah button untuk menuju ke page yang berisikan toko-toko yang berada di dalam kategori tersebut.
 
-** Menampilkan Toko**  *(Implementasi Menampilkan Toko akan dikerjakan oleh Amanda Nadhifah Zahra Andini)*
+**Menampilkan Toko**  *(Implementasi Menampilkan Toko akan dikerjakan oleh Amanda Nadhifah Zahra Andini)*
+
 Fitur ini menampilkan seluruh toko yang ada di dalam kategori yang dipilih oleh user. Dengan adanya fitur ini, user dapat menghubungi toko yang dinilai menarik minat membelinya dengan menghubungi kontak toko yang tersedia di setiap card atau pilihan toko.
 
-** Mengubah Profile**   *(Implementasi Mengubah Profile akan dikerjakan oleh Caroline Esther Ulibasa Panggabean)*
+**Mengubah Profile**   *(Implementasi Mengubah Profile akan dikerjakan oleh Caroline Esther Ulibasa Panggabean)*
+
 Fitur ini mengubah profil dari user yang sedang login. Fitur ini dapat dilihat implementasinya dengan lebih jelas pada saat user yang sedang login merupakan penjual karena perubahan nama toko atau kontak yang dapat dihubungi dapat terlihat dengan jelas.
 
-** FAQ**  *(Implementasi FAQ akan dikerjakan oleh Rakan Fasya Athhar Rayyan)*
+**FAQ**  *(Implementasi FAQ akan dikerjakan oleh Rakan Fasya Athhar Rayyan)*
+
 Fitur ini akan menampilkan seluruh pertanyaan yang sering ditanyakan oleh user. Fitur ini sendiri akan memiliki satu page secara eksklusif yang dapat diakses oleh user dengan menekan tombol yang ada di home page.
 
-** Forum**  *(Implementasi Forum akan dikerjakan oleh Jihan Hanifah Yasmin)*
+**Forum**  *(Implementasi Forum akan dikerjakan oleh Jihan Hanifah Yasmin)*
+
 Fitur ini akan menjadi sebuah forum tanya jawab yang dapat dimanfaatkan oleh user. Fitur ini sendiri akan memiliki satu page secara eksklusif yang dapat diakses oleh user dengan menekan tombol yang ada di home page.
 
 ## Alur Integrasi
