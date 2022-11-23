@@ -62,6 +62,7 @@ Fitur ini mengubah profil dari user yang sedang login. Fitur ini dapat dilihat i
 
 
 :grey_question::grey_question::grey_question: **FAQ** :grey_question::grey_question::grey_question: 
+
 *(Implementasi FAQ akan dikerjakan oleh Rakan Fasya Athhar Rayyan)*
 
 Fitur ini akan menampilkan seluruh pertanyaan yang sering ditanyakan oleh user. Fitur ini sendiri akan memiliki satu page secara eksklusif yang dapat diakses oleh user dengan menekan tombol yang ada di home page.
@@ -69,6 +70,7 @@ Fitur ini akan menampilkan seluruh pertanyaan yang sering ditanyakan oleh user. 
 
 
 :checkered_flag::checkered_flag::checkered_flag: **Forum** :checkered_flag::checkered_flag::checkered_flag: 
+
 *(Implementasi Forum akan dikerjakan oleh Jihan Hanifah Yasmin)*
 
 Fitur ini akan menjadi sebuah forum tanya jawab yang dapat dimanfaatkan oleh user. Fitur ini sendiri akan memiliki satu page secara eksklusif yang dapat diakses oleh user dengan menekan tombol yang ada di home page.
