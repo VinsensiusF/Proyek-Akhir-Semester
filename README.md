@@ -25,6 +25,7 @@ Secara garis besar, aplikasi yang kami kerjakan merupakan sebuah media sosial ya
 Untuk mempertemukan pembeli dan penjual yang cocok atau sesuai dengan kriteria barang yang dibeli, maka terdapat fitur pemisahan toko berdasarkan kategori yang ada. Dengan begitu, pembeli dapat memilih toko yang ingin mereka hubungi berdasarkan kebutuhan dan barang yang ingin dibeli.
 
 Dalam aplikasi ini, hanya terdapat dua peran pengguna. Pertama, pengguna yang berperan sebagai pembeli. Pengguna yang berperan sebagai pembeli hanya dapat melihat toko yang ada di masing-masing kategori. Kedua, user yang bertindak sebagai penjual yang dapat mengganti profil yang ia miliki guna mengubah kontak atau nama toko milik mereka yang ditampilkan pada page masing-masing kategori. Seluruh user yang mengakses aplikasi diharuskan untuk sign in terlebih dahulu guna mendapatkan role yang dimiliki.
+</p>
 
 ## Daftar Fitur
 :closed_lock_with_key::closed_lock_with_key::closed_lock_with_key: **Sign in / Sign up** :closed_lock_with_key::closed_lock_with_key::closed_lock_with_key: 
@@ -86,4 +87,4 @@ Fitur ini akan menjadi sebuah forum tanya jawab yang dapat dimanfaatkan oleh use
 4. Menggunakan asynchronous HTTP gunaa memastikan integrasi back-end berjalan dengan baik dan fungsionalitas back-end dapat diakses melalui event-handler pada front-end.
 5. Melakukan testing dan pengujian widget sesuai dengan fungsionalitas fitur dan sistem yang dirancang sebelumnya.
 
-</p>
+
