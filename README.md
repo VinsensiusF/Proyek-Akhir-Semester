@@ -18,6 +18,7 @@ Vinsensius Ferdinando - *2106751221*
 ## Nama Aplikasi  
 :sparkles::sparkles::sparkles: **Seller’s Social Media** :sparkles::sparkles::sparkles:
 
+<p align="justify">
 ## Latar Belakang dan Cerita Aplikasi
 Secara garis besar, aplikasi yang kami kerjakan merupakan sebuah media sosial yang, notabenenya, menjadi sebuah sarana pertemuan dari pembeli dan penjual. Layaknya sebuah media sosial, aplikasi kami tidak melayani pembelian barang secara langsung melainkan, mempertemukan pembeli dan penjual dengan memberikan informasi penjual kepada pembeli. Hal tersebut dilakukan agar pembeli dapat melakukan pembelian dengan memberikan penawaran harga yang, secara garis besar, tidak dapat dilakukan pada sebuah platform belanja. Dengan menghubungi secara pribadi, pembeli dapat berbincang dengan penjual melalui kontak yang ditunjukan pada aplikasi. 
 
@@ -85,3 +86,4 @@ Fitur ini akan menjadi sebuah forum tanya jawab yang dapat dimanfaatkan oleh use
 4. Menggunakan asynchronous HTTP gunaa memastikan integrasi back-end berjalan dengan baik dan fungsionalitas back-end dapat diakses melalui event-handler pada front-end.
 5. Melakukan testing dan pengujian widget sesuai dengan fungsionalitas fitur dan sistem yang dirancang sebelumnya.
 
+</p>
