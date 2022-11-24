@@ -44,6 +44,7 @@ Fitur ini merupakan landing page dari aplikasi. Dengan adanya home page ini, apl
 
 
 :cd::cd::cd: **Menampilkan Kategori** :cd::cd::cd:  
+
 *(Implementasi Menampilkan Kategori akan dikerjakan oleh Annisa Az Zahra)*
 
 Fitur ini menampilkan kategori yang ada di aplikasi ini. Kategori ditampilkan bersamaan dengan sedikit pengenalan kategori (Introduction) dan juga sebuah button untuk menuju ke page yang berisikan toko-toko yang berada di dalam kategori tersebut.
@@ -51,6 +52,7 @@ Fitur ini menampilkan kategori yang ada di aplikasi ini. Kategori ditampilkan be
 
 
 :telephone::telephone::telephone: **Menampilkan Toko** :telephone::telephone::telephone: 
+
 *(Implementasi Menampilkan Toko akan dikerjakan oleh Amanda Nadhifah Zahra Andini)*
 
 Fitur ini menampilkan seluruh toko yang ada di dalam kategori yang dipilih oleh user. Dengan adanya fitur ini, user dapat menghubungi toko yang dinilai menarik minat membelinya dengan menghubungi kontak toko yang tersedia di setiap card atau pilihan toko.
@@ -58,6 +60,7 @@ Fitur ini menampilkan seluruh toko yang ada di dalam kategori yang dipilih oleh 
 
 
 :smile::smile::smile: **Mengubah Profile** :smile::smile::smile:  
+
 *(Implementasi Mengubah Profile akan dikerjakan oleh Caroline Esther Ulibasa Panggabean)*
 
 Fitur ini mengubah profil dari user yang sedang login. Fitur ini dapat dilihat implementasinya dengan lebih jelas pada saat user yang sedang login merupakan penjual karena perubahan nama toko atau kontak yang dapat dihubungi dapat terlihat dengan jelas.
@@ -77,8 +80,6 @@ Fitur ini akan menampilkan seluruh pertanyaan yang sering ditanyakan oleh user. 
 *(Implementasi Forum akan dikerjakan oleh Jihan Hanifah Yasmin)*
 
 Fitur ini akan menjadi sebuah forum tanya jawab yang dapat dimanfaatkan oleh user. Fitur ini sendiri akan memiliki satu page secara eksklusif yang dapat diakses oleh user dengan menekan tombol yang ada di home page.
-
-
 
 
 ## Alur Integrasi
