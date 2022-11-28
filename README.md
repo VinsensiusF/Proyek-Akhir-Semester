@@ -1,5 +1,8 @@
 # Seller’s Social Media - SellerPrism
 
+#Migrated Website
+*https://medsos-umkm.up.railway.app/*
+
 ## Nama Anggota Kelompok
 Amanda Nadhifah Zahra Andini - *2106637246*
 
