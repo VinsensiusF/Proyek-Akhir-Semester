@@ -1,6 +1,6 @@
 # Seller’s Social Media - SellerPrism
 
-# Migrated Website\n
+### Migrated Website\n
 *https://medsos-umkm.up.railway.app/*
 
 ## Nama Anggota Kelompok
