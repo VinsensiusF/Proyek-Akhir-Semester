@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:Proyek-Akhir-Semester/model/reply_model.dart';
-import 'package:Proyek-Akhir-Semester/model/forum_model.dart';
+import 'package:pas/models/reply_model.dart';
+import 'package:pas/models/forum_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -10,14 +10,14 @@ class FormReply extends StatefulWidget {
     final Forum forumModel;
 
     @override
-    State<FormReply> createState() => _FormReplyState();
+    State<FormReply> createState() => _FormReplyState(forumModel);
 }
 
 class _FormReplyState extends State<FormReply> {
     Forum model;
     _FormReplyState(this.model);
 
-    final _formKey = GlobalKey<FormReply>();
+    final _formKey = GlobalKey<FormState>();
 
     String _pesan = "";
 
@@ -28,13 +28,14 @@ class _FormReplyState extends State<FormReply> {
             //bisa ngga pass model forum lewat sini --> untuk foreignkey
             Uri.parse('https://medsos-umkm.up.railway.app/forum/add_reply_flutter/'+id),
             headers: <String, String>{'Content-Type': 'application/json'},
-            body: jsonEncode(<String, dynamic>){
+            body: jsonEncode(<String, dynamic>{
                 'discussion': _pesan,
                 'id': int.parse(id), 
                 'forum_pk': forum_pk,
-            }
+            })
         );
     }
+    
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +95,7 @@ class _FormReplyState extends State<FormReply> {
                               ),
                               onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                      String id = widget.id;
+                                      String id = '1';//widget.id;
                                       submit(context, id);
                                   }
                               },

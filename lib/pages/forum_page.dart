@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:Proyek-Akhir-Semester/model/forum_model.dart';
-import 'package:Proyek-Akhir-Semester/page/reply_page.dart';
+import 'package:pas/models/forum_model.dart';
+import 'package:pas/pages/reply_page.dart';
 
 
 //belum tambahin tombol untuk add forum, cara pisahin dari futurebuilder?
@@ -32,8 +32,8 @@ class _ForumPageState extends State<ForumPage> {
                             Text(
                                 "Tidak ada forum",
                                 style: TextStyle(
-                                    color: Color(Colors.black),
-                                    fontsize: 20
+                                    color: Color(0xff59A5D8),
+                                    fontSize: 20
                                 ),
                             ),
                             SizedBox(height: 10),
@@ -89,6 +89,6 @@ class _ForumPageState extends State<ForumPage> {
             }
         }
       ),
-    )
+    );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:Proyek-Akhir-Semester/model/forum_model.dart';
-import 'package:Proyek-Akhir-Semester/page/forum_page.dart';
-import 'package:Proyek-Akhir-Semester/model/reply_model.dart';
-import 'package:Proyek-Akhir-Semester/page/form_reply.dart';
+import 'package:pas/models/forum_model.dart';
+import 'package:pas/pages/forum_page.dart';
+import 'package:pas/models/reply_model.dart';
+import 'package:pas/pages/form_reply.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -31,7 +31,7 @@ class _ReplyPageState extends State<ReplyPage> {
       body: Column(
         children:[
           Padding(
-            padding const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               children:[
                 Text(
@@ -67,7 +67,7 @@ class _ReplyPageState extends State<ReplyPage> {
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => FormReply(forumModel: snapshot.data![index])
+                          builder: (context) => FormReply(forumModel: model)
                       ),
                     ),
                     child: Text(

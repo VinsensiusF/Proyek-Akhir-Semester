@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pas/pages/forum_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -78,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: const Text("Forum"),
                     onTap: () {
                       Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                      MaterialPageRoute(builder: (context) => const ForumPage()),
                       );
                     },
                   ),

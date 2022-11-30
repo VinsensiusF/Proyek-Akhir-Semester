@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:Proyek-Akhir-Semester/model/forum_model.dart';
+import 'package:pas/models/forum_model.dart';
 
 List<Reply> replyFromJson(String str) => List<Reply>.from(json.decode(str).map((x) => Reply.fromJson(x)));
 

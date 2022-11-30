@@ -35,7 +35,7 @@ class Forum {
     static Future<List<Forum>> fetchForum() async {
         //tanyain kalo mau get per-kategori gimana? masukin link-nya parameternya gimana
         //buat dropdown-nya
-        var url = Uri.parse('https://medsos-umkm.up.railway.app/forum/json/semua/'); 
+        var url = Uri.parse('https://medsos-umkm.up.railway.app/forum/json/semua'); 
         var response = await http.get(
             url,
             headers: {
@@ -52,6 +52,7 @@ class Forum {
                     forum.add(Forum.fromJson(d));
                 }
             }
+        return forum;
     }
 }
 

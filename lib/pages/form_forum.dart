@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Proyek-Akhir-Semester/model/forum_model.dart';
+import 'package:pas/models/forum_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -11,7 +11,7 @@ class FormForum extends StatefulWidget {
 }
 
 class _FormForumState extends State<FormForum> {
-    final _formKey = GlobalKey<FormForum>();
+    final _formKey = GlobalKey<FormState>();
 
     String _judul = "";
     String _pesan = "";
