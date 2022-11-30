@@ -48,68 +48,160 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            appBar: AppBar(
+                title: const Text('SellerPrism.io'),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            drawer: Drawer(
+              child: Column(
+                children: [
+                  ListTile(
+                    title: const Text("Home Page"),
+                    onTap: () {
+                      Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text("Lihat Kategori"),
+                    onTap: () {
+                      Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text("Forum"),
+                    onTap: () {
+                      Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('FAQ'),
+                    onTap: () {
+                        // Route menu ke halaman to do
+                        Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                        );
+                    },
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+            body: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    // Menggunakan padding sebesar 8 pixels
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                        decoration: InputDecoration(
+                            hintText: "Contoh: Toko Pak Budi",
+                            labelText: "Search Toko",
+                            // Menambahkan icon agar lebih intuitif
+                            icon: const Icon(Icons.search),
+                            // Menambahkan circular border agar lebih rapi
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                            ),
+                        ),
+                      )
+                    ),
+                  // Align(alignment: Alignment.topCenter,
+                  Image.network(
+                      'https://picsum.photos/id/1074/400/400',
+                      width: 400,
+                      height: 200,
+                      fit: BoxFit.cover,
+                    ),
+                  // ),
+              
+                  
+                  Expanded(flex:2,
+                  child: Container(width: 400.0,
+                        height: 250.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(2),
+                          color: const Color.fromARGB(53, 250, 250, 250),
+                        ),
+                       
+                        child:const Center(
+                          child: Text("SellerPrism.io merupakan salah satu wadah sosialisasi dan pengembangan UMKM di seluruh Indonesia. Hal ini sesuai dengan motto MedsosUMKM, yaitu ""Sejahtera Bersama, Cemerlang Bersama"". MedsosUMKM menyediakan banyak fitur layaknya media sosial, seperti Instagram dan Facebook yang dapat digunakan oleh berbagai UMKM supaya bisa saling berinteraksi dan bekerja sama. Tentunya, website ini dapat digunakan dan diakses secara gratis oleh siapapun. Dengan adanya website ini, diharapkan semua UMKM di Indonesia menjadi saling terhubung dan memungkinkan timbulnya banyak kerja sama antara UMKM. Selain untuk antar UMKM, MedsosUMKM ini juga ditunjukkan untuk para investor yang ingin melakukan investasi di sektor UMKM dan bagi para konsumer yang tertarik dalam UMKM.", 
+                              style: TextStyle(
+                                fontFamily: 'Arial',
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 31, 30, 30),
+                                // height: 50,
+                              ),
+                              textAlign: TextAlign.justify,
+                                ),
+                            ),
+                        ),
+                        // const SizedBox(height: 40),
+                  ),
+                    
+                  Align(
+                        alignment: Alignment.bottomCenter,
+                        child: TextButton(
+                                  onPressed: () {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                                      );
+                                  },
+                                  style: TextButton.styleFrom(
+                                      primary: Colors.white,
+                                      backgroundColor: Colors.blue,
+                                      minimumSize: const Size.fromHeight(50),
+                                  ),
+                                  child: const Text('Daftar Kategori', style: TextStyle(fontSize: 15),),
+                              ), 
+                        ),
+                        const SizedBox(height: 5),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: TextButton(
+                                    onPressed: () {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                                        );
+                                    },
+                                    style: TextButton.styleFrom(
+                                        primary: Colors.white,
+                                        backgroundColor: Colors.blue,
+                                        minimumSize: const Size.fromHeight(50),
+                                    ),
+                                    child: const Text('Lihat Forum', style: TextStyle(fontSize: 15),),
+                                ), 
+                          ),
+                          const SizedBox(height: 5),
+                          Align(
+                          alignment: Alignment.bottomCenter,
+                          child: TextButton(
+                                    onPressed: () {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                                        );
+                                    },
+                                    style: TextButton.styleFrom(
+                                        primary: Colors.white,
+                                        backgroundColor: Colors.blue,
+                                        minimumSize: const Size.fromHeight(50),
+                                    ),
+                                    child: const Text('Lihat FAQ', style: TextStyle(fontSize: 15),),
+                                ), 
+                          ),
+                ]
+              ),
+            );
   }
 }
