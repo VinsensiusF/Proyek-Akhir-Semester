@@ -60,10 +60,10 @@ class _MyListPageState extends State<MyLandingPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis lectus leo. Aliquam quis turpis cursus turpis tempor molestie sit amet eget magna. Aliquam hendrerit sagittis orci eu convallis. Curabitur efficitur orci at dignissim ultricies. Sed rhoncus pellentesque feugiat. Sed imperdiet quis nunc eu feugiat. Nam vel imperdiet metus, eget facilisis mauris. Mauris eu nibh semper, gravida ante sit amet, eleifend lacus. Etiam et eros nisi.Integer vestibulum nulla ipsum. Maecenas facilisis, sem eu pulvinar rhoncus, eros ante commodo diam, eu vulputate augue orci sed magna. Nulla facilisi. Aenean efficitur lorem mi, non tristique tellus dignissim quis. Sed venenatis turpis ipsum, at finibus orci vulputate quis. Donec pellentesque ipsum non ultricies vehicula. Suspendisse faucibus rhoncus eleifend.", 
+                  const Text("MedsosUMKM merupakan salah satu wadah sosialisasi dan pengembangan UMKM di seluruh Indonesia. Hal ini sesuai dengan motto MedsosUMKM, yaitu ""Sejahtera Bersama, Cemerlang Bersama"". MedsosUMKM menyediakan banyak fitur layaknya media sosial, seperti Instagram dan Facebook yang dapat digunakan oleh berbagai UMKM supaya bisa saling berinteraksi dan bekerja sama. Tentunya, website ini dapat digunakan dan diakses secara gratis oleh siapapun. Dengan adanya website ini, diharapkan semua UMKM di Indonesia menjadi saling terhubung dan memungkinkan timbulnya banyak kerja sama antara UMKM. Selain untuk antar UMKM, MedsosUMKM ini juga ditunjukkan untuk para investor yang ingin melakukan investasi di sektor UMKM dan bagi para konsumer yang tertarik dalam UMKM.", 
                         textAlign: TextAlign.justify,),
                         const SizedBox(height: 50),
-                  Align(
+                      Align(
                         alignment: Alignment.bottomCenter,
                         child: TextButton(
                                   onPressed: () {
@@ -81,25 +81,25 @@ class _MyListPageState extends State<MyLandingPage> {
                               ), 
                         ),
                         const SizedBox(height: 5),
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: TextButton(
-                                    onPressed: () {
-                                        Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(builder: (context) => const MyLandingPage()),
-                                        );
-                                    },
-                                    style: TextButton.styleFrom(
-                                        primary: Colors.white,
-                                        backgroundColor: Colors.blue,
-                                        minimumSize: const Size.fromHeight(50),
-                                    ),
-                                    child: const Text('Lihat Forum', style: TextStyle(fontSize: 15),),
-                                ), 
-                          ),
-                          const SizedBox(height: 5),
-                          Align(
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: TextButton(
+                                  onPressed: () {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                                      );
+                                  },
+                                  style: TextButton.styleFrom(
+                                      primary: Colors.white,
+                                      backgroundColor: Colors.blue,
+                                      minimumSize: const Size.fromHeight(50),
+                                  ),
+                                  child: const Text('Lihat Forum', style: TextStyle(fontSize: 15),),
+                              ), 
+                        ),
+                        const SizedBox(height: 5),
+                      Align(
                           alignment: Alignment.bottomCenter,
                           child: TextButton(
                                     onPressed: () {
