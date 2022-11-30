@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pas/pages/landing_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -63,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: const Text("Home Page"),
                     onTap: () {
                       Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                       );
                     },
                   ),
@@ -71,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: const Text("Lihat Kategori"),
                     onTap: () {
                       Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                       );
                     },
                   ),
@@ -79,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: const Text("Forum"),
                     onTap: () {
                       Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                       );
                     },
                   ),
@@ -89,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         // Route menu ke halaman to do
                         Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                         );
                     },
                   ),
@@ -154,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   onPressed: () {
                                       Navigator.pushReplacement(
                                           context,
-                                          MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                                          MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                                       );
                                   },
                                   style: TextButton.styleFrom(
@@ -172,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     onPressed: () {
                                         Navigator.pushReplacement(
                                             context,
-                                            MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                                            MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                                         );
                                     },
                                     style: TextButton.styleFrom(
@@ -190,7 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     onPressed: () {
                                         Navigator.pushReplacement(
                                             context,
-                                            MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                                            MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                                         );
                                     },
                                     style: TextButton.styleFrom(
