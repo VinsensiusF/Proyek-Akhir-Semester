@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pas/widget/drawer.dart';
@@ -7,10 +6,6 @@ import 'package:pas/pages/kategori_page.dart';
 
 
 import 'models/models_search_home.dart';
-=======
-import 'package:pas/pages/landing_page.dart';
-import 'package:pas/pages/kategori_page.dart';
->>>>>>> 785a93caa03fbcbae793299da36846c0475eebe2
 
 void main() {
   runApp(const MyApp());
