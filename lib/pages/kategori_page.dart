@@ -51,7 +51,7 @@ class _MyListPageState extends State<MyKategoriPage> {
                         // Route menu ke halaman to do
                         Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io test',)),
                         );
                     },
                   ),
