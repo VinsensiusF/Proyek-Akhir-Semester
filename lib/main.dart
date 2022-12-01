@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
             appBar: AppBar(
-                title: const Text('Home Page'),
+                title: const Text('SellerPrism.io'),
             ),
             drawer: Drawer(
               child: Column(
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: const Text("Home Page"),
                     onTap: () {
                       Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                       );
                     },
                   ),
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: const Text("Forum"),
                     onTap: () {
                       Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                       );
                     },
                   ),
@@ -90,79 +90,120 @@ class _MyHomePageState extends State<MyHomePage> {
                         // Route menu ke halaman to do
                         Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                         );
                     },
                   ),
                 ],
               ),
             ),
-            body: Center(
-              child: Column(
+            body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
-                  Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis lectus leo. Aliquam quis turpis cursus turpis tempor molestie sit amet eget magna. Aliquam hendrerit sagittis orci eu convallis. Curabitur efficitur orci at dignissim ultricies. Sed rhoncus pellentesque feugiat. Sed imperdiet quis nunc eu feugiat. Nam vel imperdiet metus, eget facilisis mauris. Mauris eu nibh semper, gravida ante sit amet, eleifend lacus. Etiam et eros nisi.Integer vestibulum nulla ipsum. Maecenas facilisis, sem eu pulvinar rhoncus, eros ante commodo diam, eu vulputate augue orci sed magna. Nulla facilisi. Aenean efficitur lorem mi, non tristique tellus dignissim quis. Sed venenatis turpis ipsum, at finibus orci vulputate quis. Donec pellentesque ipsum non ultricies vehicula. Suspendisse faucibus rhoncus eleifend.")
-
-                ]
-              ),
-            ),
-            floatingActionButton: Visibility(
-                child: Container(
-                  width: 762,
-                  child: Stack(
-                    children: <Widget>[
-                      Align(
+                children: <Widget>[
+                  Padding(
+                    // Menggunakan padding sebesar 8 pixels
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextFormField(
+                        decoration: InputDecoration(
+                            hintText: "Contoh: Toko Pak Budi",
+                            labelText: "Search Toko",
+                            // Menambahkan icon agar lebih intuitif
+                            icon: const Icon(Icons.search),
+                            // Menambahkan circular border agar lebih rapi
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                            ),
+                        ),
+                      )
+                    ),
+                  // Align(alignment: Alignment.topCenter,
+                  Image.network(
+                      'https://picsum.photos/id/1074/400/400',
+                      width: 400,
+                      height: 200,
+                      fit: BoxFit.cover,
+                    ),
+                  // ),
+              
+                  
+                  Expanded(flex:2,
+                  child: Container(width: 400.0,
+                        height: 250.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(2),
+                          color: const Color.fromARGB(53, 250, 250, 250),
+                        ),
+                       
+                        child:const Center(
+                          child: Text("SellerPrism.io merupakan salah satu wadah sosialisasi dan pengembangan UMKM di seluruh Indonesia. Hal ini sesuai dengan motto MedsosUMKM, yaitu ""Sejahtera Bersama, Cemerlang Bersama"". MedsosUMKM menyediakan banyak fitur layaknya media sosial, seperti Instagram dan Facebook yang dapat digunakan oleh berbagai UMKM supaya bisa saling berinteraksi dan bekerja sama. Tentunya, website ini dapat digunakan dan diakses secara gratis oleh siapapun. Dengan adanya website ini, diharapkan semua UMKM di Indonesia menjadi saling terhubung dan memungkinkan timbulnya banyak kerja sama antara UMKM. Selain untuk antar UMKM, MedsosUMKM ini juga ditunjukkan untuk para investor yang ingin melakukan investasi di sektor UMKM dan bagi para konsumer yang tertarik dalam UMKM.", 
+                              style: TextStyle(
+                                fontFamily: 'Arial',
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 31, 30, 30),
+                                // height: 50,
+                              ),
+                              textAlign: TextAlign.justify,
+                                ),
+                            ),
+                        ),
+                        // const SizedBox(height: 40),
+                  ),
+                    
+                  Align(
                         alignment: Alignment.bottomCenter,
                         child: TextButton(
                                   onPressed: () {
                                       Navigator.pushReplacement(
                                           context,
-                                          MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                                          MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                                       );
                                   },
                                   style: TextButton.styleFrom(
                                       primary: Colors.white,
                                       backgroundColor: Colors.blue,
+                                      minimumSize: const Size.fromHeight(50),
                                   ),
                                   child: const Text('Daftar Kategori', style: TextStyle(fontSize: 15),),
                               ), 
                         ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: TextButton(
-                                  onPressed: () {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => const MyLandingPage()),
-                                      );
-                                  },
-                                  style: TextButton.styleFrom(
-                                      primary: Colors.white,
-                                      backgroundColor: Colors.blue,
-                                  ),
-                                  child: const Text('Lihat Forum', style: TextStyle(fontSize: 15),),
-                              ), 
-                        ),
+                        const SizedBox(height: 5),
                         Align(
-                        alignment: Alignment.bottomCenter,
-                        child: TextButton(
-                                  onPressed: () {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => const MyLandingPage()),
-                                      );
-                                  },
-                                  style: TextButton.styleFrom(
-                                      primary: Colors.white,
-                                      backgroundColor: Colors.blue,
-                                  ),
-                                  child: const Text('Lihat FAQ', style: TextStyle(fontSize: 15),),
-                              ), 
-                        ),
-                    ],
-                  )
-                )
-              )
-          );
+                          alignment: Alignment.bottomCenter,
+                          child: TextButton(
+                                    onPressed: () {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                                        );
+                                    },
+                                    style: TextButton.styleFrom(
+                                        primary: Colors.white,
+                                        backgroundColor: Colors.blue,
+                                        minimumSize: const Size.fromHeight(50),
+                                    ),
+                                    child: const Text('Lihat Forum', style: TextStyle(fontSize: 15),),
+                                ), 
+                          ),
+                          const SizedBox(height: 5),
+                          Align(
+                          alignment: Alignment.bottomCenter,
+                          child: TextButton(
+                                    onPressed: () {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                                        );
+                                    },
+                                    style: TextButton.styleFrom(
+                                        primary: Colors.white,
+                                        backgroundColor: Colors.blue,
+                                        minimumSize: const Size.fromHeight(50),
+                                    ),
+                                    child: const Text('Lihat FAQ', style: TextStyle(fontSize: 15),),
+                                ), 
+                          ),
+                ]
+              ),
+            );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pas/pages/landing_page.dart';
+import 'package:pas/main.dart';
 
 
 class MyKategoriPage extends StatefulWidget {
@@ -15,7 +16,7 @@ class _MyListPageState extends State<MyKategoriPage> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: const Text('Kategori'),
+                title: const Text('SellerPrism.io'),
             ),
             drawer: Drawer(
               child: Column(
@@ -24,7 +25,7 @@ class _MyListPageState extends State<MyKategoriPage> {
                     title: const Text("Home Page"),
                     onTap: () {
                       Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                       );
                     },
                   ),
@@ -40,7 +41,7 @@ class _MyListPageState extends State<MyKategoriPage> {
                     title: const Text("Forum"),
                     onTap: () {
                       Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                       );
                     },
                   ),
@@ -50,7 +51,7 @@ class _MyListPageState extends State<MyKategoriPage> {
                         // Route menu ke halaman to do
                         Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const MyLandingPage()),
+                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
                         );
                     },
                   ),
