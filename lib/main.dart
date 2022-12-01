@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pas/widget/drawer.dart';
+import 'package:pas/pages/kategori_page.dart';
+
 
 import 'models/models_search_home.dart';
 
