@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pas/widget/drawer.dart';
@@ -6,6 +7,10 @@ import 'package:pas/pages/kategori_page.dart';
 
 
 import 'models/models_search_home.dart';
+=======
+import 'package:pas/pages/landing_page.dart';
+import 'package:pas/pages/kategori_page.dart';
+>>>>>>> 785a93caa03fbcbae793299da36846c0475eebe2
 
 void main() {
   runApp(const MyApp());
@@ -79,9 +84,47 @@ class _MyHomePageState extends State<MyHomePage> {
             appBar: AppBar(
                 title: const Text('SellerPrism.io'),
             ),
-            drawer: const Drawers(),
-            body: 
-            Column(
+            drawer: Drawer(
+              child: Column(
+                children: [
+                  ListTile(
+                    title: const Text("Home Page"),
+                    onTap: () {
+                      Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text("Lihat Kategori"),
+                    onTap: () {
+                      Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => const MyKategoriPage()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text("Forum"),
+                    onTap: () {
+                      Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('FAQ'),
+                    onTap: () {
+                        // Route menu ke halaman to do
+                        Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                        );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
