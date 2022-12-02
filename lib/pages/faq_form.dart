@@ -38,7 +38,10 @@ class _MyFAQFormState extends State<MyFAQForm> {
               children: [
                 TextFormField(
                   decoration: const InputDecoration(
-                    hintText: "Pertanyaan",
+                    hintText: "Apa itu SellerPrism.io?",
+                    icon: Icon(Icons.question_mark_outlined),
+                    labelText: "Pertanyaan",
+                    border: OutlineInputBorder(),
                   ),
                   onChanged: (String? value) {
                     setState(() {
@@ -59,9 +62,13 @@ class _MyFAQFormState extends State<MyFAQForm> {
                     return null;
                   },
                 ),
+                SizedBox(height: 30, width: 30,),
                 TextFormField(
                   decoration: const InputDecoration(
-                    hintText: "Jawaban",
+                    hintText: "SellerPrism.io merupakan aplikasi ...",
+                    labelText: "Jawaban",
+                    icon: Icon(Icons.question_answer_outlined),
+                    border: OutlineInputBorder(),
                   ),
                   onChanged: (String? value) {
                     setState(() {

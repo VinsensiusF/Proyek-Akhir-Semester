@@ -83,6 +83,10 @@ class _MyFAQPageState extends State<MyFAQPage> {
                               title: snapshot.data![index].fields.question,
                               content: snapshot.data![index].fields.answer,
                               titleBorder: Border.all(),
+                              titlePadding: EdgeInsets.all(18.0),
+                              contentPadding: EdgeInsets.all(20.0),
+                              titleBorderRadius: BorderRadius.circular(20),
+                              collapsedTitleBackgroundColor: Colors.white10,
                             ),
                           ));
                     }
