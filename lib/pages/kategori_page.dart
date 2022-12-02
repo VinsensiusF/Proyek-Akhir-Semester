@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pas/main.dart';
 import 'package:pas/widget/drawer.dart';
+import 'package:pas/function/fetch_kategori.dart';
+import 'package:pas/pages/kategori_form_page.dart';
 
 
 class MyKategoriPage extends StatefulWidget {
@@ -19,74 +21,62 @@ class _MyListPageState extends State<MyKategoriPage> {
                 title: const Text('SellerPrism.io'),
             ),
             drawer: const Drawers(),
-            body: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                
-                children: <Widget>[
-                    Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child:  Image.network(
-                                    'https://cdn.dribbble.com/users/539800/screenshots/2892313/dribble_category_icons.gif',
-                                    width: 400,
-                                    // height: 200,
-                                    fit: BoxFit.cover,
+            body: Center(
+                child:  FutureBuilder(
+                    future: fetchKategori(),
+                    builder: (context, AsyncSnapshot snapshot) {
+                        if (snapshot.data == null) {
+                            return const Center(child: CircularProgressIndicator());
+                        } else {
+                            if (!snapshot.hasData) {
+                                return Column(
+                                    children: const [
+                                    Text("Tidak ada kategori tersedia :(", style: TextStyle(color: Color(0xff59A5D8), fontSize: 20
                                 ),
-                        
-                    ),
-                    
-
-                    Expanded(flex:2,
-                  child: Container(
-                        // width: 400.0,
-                        // height: 60.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(2),
-                          color: const Color.fromARGB(53, 250, 250, 250),
-                        ),
-                       
-                        child:const Center(
-                          child: Text("Temukan produk dengan kategori yang kamu inginkan disini!", 
-                              style: TextStyle(
-                                fontFamily: 'Arial',
-                                fontSize: 14,
-                                color: Color.fromARGB(255, 31, 30, 30),
-                                // height: 50,
-                              ),
-                              textAlign: TextAlign.justify,
                                 ),
-                            ),
-                        ),
-                        // const SizedBox(height: 40),
-                  ),
-
-                    Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Card(
-                            child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                                const ListTile(
-                                leading: Icon(Icons.fastfood),
-                                title: Text('Kategori A'),
-                                subtitle: Text('Temukan produk terbaik kategori A disini.'),
-                                ),
-                                Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                    TextButton(
-                                    child: const Text('Lihat Toko'),
-                                    onPressed: () {/* ... */},
-                                    ),
-                                    const SizedBox(width: 8),
+                                SizedBox(height: 8),
                                 ],
-                                ),
-                            ],
-                            ),
-                        ),
-                    ),
-                ],
-            ),
-    
-          );
+                            );
+                            } else {
+                            return ListView.builder(
+                                itemCount: snapshot.data!.length,
+                                itemBuilder: (_, index) => Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Material(
+                                            elevation: 2.0,
+                                            borderRadius: BorderRadius.circular(5.0),
+                                            color: Colors.white,
+                                            shadowColor: Colors.blueGrey,
+                                            
+                                            child: ListTile(
+                                                onTap: () {
+                                                // Route menu ke halaman details
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        MyKategoriFormPage(
+                                                    ),
+                                                    ));
+                                            },
+                                                leading: Icon(Icons.category),
+                                                title: Text(snapshot.data![index].fields.nama),
+                                                subtitle: Text(snapshot.data![index].fields.deskripsi),
+                                            )
+                                        ),
+                                    )
+                                    
+                            );
+                            }
+                        }
+                    }
+                ),
+            
+        ),
+            
+
+ 
+        );
     }
 }
+    
