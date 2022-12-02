@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         },
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'SellerPrism.io',
           theme: ThemeData(
             // This is the theme of your application.
             //
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             scaffoldBackgroundColor: Colors.white,
           ),
-          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          home: const MyHomePage(title: 'SellerPrism.io'),
         ));
   }
 }
@@ -113,8 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     suffixIcon: IconButton(
                       onPressed: () {
                         for (var res in list) {
-                          if (res.fields.username.toString().toLowerCase() ==
-                              _namatoko.toLowerCase()) {
+                          if (res.fields.username.toString().toLowerCase() == _namatoko.toLowerCase()) {
                             index = res;
                           }
                         }
