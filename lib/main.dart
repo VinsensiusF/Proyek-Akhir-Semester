@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         },
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'SellerPrism.io',
           theme: ThemeData(
             // This is the theme of your application.
             //
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             scaffoldBackgroundColor: Colors.white,
           ),
-          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          home: const MyHomePage(title: 'SellerPrism.io'),
         ));
   }
 }
@@ -245,8 +245,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyFAQPage()),
+                    MaterialPageRoute(builder: (context) => const MyFAQPage()),
                   );
                 },
                 style: TextButton.styleFrom(

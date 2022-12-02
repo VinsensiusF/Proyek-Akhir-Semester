@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pas/pages/profile_page.dart';
 import 'package:pas/pages/faq_page.dart';
 
 import '../main.dart';
@@ -31,6 +32,14 @@ class _DrawerState extends State<Drawers> {
                 },
               ),
               ListTile(
+                      title: const Text("Profile"),
+                      onTap: () {
+                        Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => ProfilePage()),
+                        );
+                      },
+                    ),
+                    ListTile(
                 title: const Text("Lihat Kategori"),
                 onTap: () {
                   Navigator.pushReplacement(context,
