@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pas/widget/drawer.dart';
+import 'package:pas/pages/kategori_page.dart';
+
 
 import 'models/models_search_home.dart';
 
@@ -37,6 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
   String _namatoko = "";
   List<Search> list = <Search>[];
   var res;
+  String _explain = "";
+
   @override
   initState(){
     fetchToDo();
@@ -92,6 +96,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                         index = res;
                                     }
                                   }
+                                  if(index == null){
+                                    _explain = "Toko Tidak Ditemukan";
+                                  }
+                                  else{
+                                    _explain = "Toko ${index.fields.username} \nEmail: ${index.fields.email} \nOnline Terakhir: ${index.fields.lastLogin.toString().split(" ")[0]} \nWaktu Bergabung: ${index.fields.dateJoined.toString().split(" ")[0]}";
+                                  }
                                   Widget okButton = TextButton(
                                       child: Text("OK"),
                                       onPressed: () { 
@@ -100,8 +110,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     );
 
                                   AlertDialog alert = AlertDialog(
-                                      title: Text("Nomor Telepon Toko"),
-                                      content: Text(" Toko ${index.fields.username} \n Email: ${index.fields.email}"),
+                                      title: Text("Detail Toko"),
+                                      content: Text(_explain),
                                       actions: [
                                         okButton,
                                       ],
@@ -133,15 +143,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         textInputAction: TextInputAction.search,
                       )
                     ),
-                  Image.network(
-                      'https://picsum.photos/id/1074/400/400',
+
+                    Image.asset('lib/assets/umkm.jpeg',
                       width: 400,
-                      height: 200,
-                      fit: BoxFit.cover,
-                    ),
-                  // ),
-              
-                  
+                      height: 225,
+                      fit: BoxFit.cover,),
+                
                   Expanded(flex:2,
                   child: Container(width: 400.0,
                         height: 250.0,

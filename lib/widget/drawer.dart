@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../main.dart';
+import 'package:pas/pages/kategori_page.dart';
 import 'package:pas/pages/forum_page.dart';
 
 class Drawers extends StatefulWidget {
@@ -30,7 +31,7 @@ class _DrawerState extends State<Drawers> {
                       title: const Text("Lihat Kategori"),
                       onTap: () {
                         Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                        MaterialPageRoute(builder: (context) => const MyKategoriPage()),
                         );
                       },
                     ),
