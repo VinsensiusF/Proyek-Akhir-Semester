@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pas/pages/daftar_proyek_page.dart';
-import 'package:pas/pages/signup_buyer_page.dart';
 import 'package:pas/pages/signup_page.dart';
-import 'package:pas/pages/signup_seller_page.dart';
 import 'dart:core';
 import 'package:provider/provider.dart';
 import 'package:pas/utils/utils.dart';
@@ -129,8 +127,7 @@ class _State extends State<LoginPage> {
                                     if (_loginFormKey.currentState!
                                         .validate()) {
                                       //const url = "http://127.0.0.1:8000/auth/login_flutter/";
-                                      const url = "http://127.0.0.1:8000/login_flutter/";
-
+                                      const url = "https://medsos-umkm.up.railway.app/login_flutter/";
                                       final response = await request.login(
                                           url,
                                           _controllerUsername.text,
@@ -165,7 +162,7 @@ class _State extends State<LoginPage> {
                       onPressed: () {
                         //signup screen
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SignupBuyerPage(),
+                          builder: (context) => SignupPage(),
                         ));
                       },  
                     ),
