@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pas/pages/forum_page.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:pas/widget/drawer.dart';
+
+import 'models/models_search_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,15 +18,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -32,16 +27,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -49,53 +34,48 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String _namatoko = "";
+  List<Search> list = <Search>[];
+  var res;
+  @override
+  initState(){
+    fetchToDo();
+  }
+
+  Future<List<Search>> fetchToDo() async {
+        var url = Uri.parse('https://medsos-umkm.up.railway.app/katalog/show_toko_json/');
+        var response = await http.get(
+        url,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+        },
+    );
+
+        // melakukan decode response menjadi bentuk json
+        
+        var data = jsonDecode(utf8.decode(response.bodyBytes));
+
+        // melakukan konversi data json menjadi object ToDo
+        List<Search> listFields = [];
+        for (var d in data) {
+        if (d != null) {
+            list.add(Search.fromJson(d));
+            listFields.add(Search.fromJson(d));
+        }
+        }
+
+        return listFields;
+    }
 
   @override
   Widget build(BuildContext context) {
+    var index;
     return Scaffold(
             appBar: AppBar(
                 title: const Text('SellerPrism.io'),
             ),
-            drawer: Drawer(
-              child: Column(
-                children: [
-                  ListTile(
-                    title: const Text("Home Page"),
-                    onTap: () {
-                      Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: const Text("Lihat Kategori"),
-                    onTap: () {
-                      Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: const Text("Forum"),
-                    onTap: () {
-                      Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const ForumPage()),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('FAQ'),
-                    onTap: () {
-                        // Route menu ke halaman to do
-                        Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
-                        );
-                    },
-                  ),
-                ],
-              ),
-            ),
+            drawer: const Drawers(),
             body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -104,7 +84,39 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                         decoration: InputDecoration(
-                            hintText: "Contoh: Toko Pak Budi",
+                            hintText: "Hanya Masukkan Nama tanpa kata ""Toko""",
+                            suffixIcon: IconButton(
+                                onPressed: (){
+                                  for (var res in list){
+                                    if( res.fields.username.toString().toLowerCase() == _namatoko.toLowerCase()){
+                                        index = res;
+                                    }
+                                  }
+                                  Widget okButton = TextButton(
+                                      child: Text("OK"),
+                                      onPressed: () { 
+                                        Navigator.of(context, rootNavigator: true).pop('dialog');
+                                      },
+                                    );
+
+                                  AlertDialog alert = AlertDialog(
+                                      title: Text("Nomor Telepon Toko"),
+                                      content: Text(" Toko ${index.fields.username} \n Email: ${index.fields.email}"),
+                                      actions: [
+                                        okButton,
+                                      ],
+                                    );
+
+
+                                  showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return alert;
+                                        },
+                                      );
+                                    },
+                                icon: const Icon(Icons.arrow_circle_right_outlined ),
+                              ),
                             labelText: "Search Toko",
                             // Menambahkan icon agar lebih intuitif
                             icon: const Icon(Icons.search),
@@ -113,9 +125,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 borderRadius: BorderRadius.circular(5.0),
                             ),
                         ),
+                        onChanged: (String? value) {
+                            setState(() {
+                                _namatoko = value!;
+                            });
+                        },
+                        textInputAction: TextInputAction.search,
                       )
                     ),
-                  // Align(alignment: Alignment.topCenter,
                   Image.network(
                       'https://picsum.photos/id/1074/400/400',
                       width: 400,
@@ -204,5 +221,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ]
               ),
             );
+
   }
 }

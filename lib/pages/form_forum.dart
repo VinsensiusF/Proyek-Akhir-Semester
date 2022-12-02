@@ -21,11 +21,11 @@ class _FormForumState extends State<FormForum> {
         final response = await http.post(
             Uri.parse('https://medsos-umkm.up.railway.app/forum/add_forum_flutter/'+id),
             headers: <String, String>{'Content-Type': 'application/json'},
-            body: jsonEncode(<String, dynamic>){
+            body: jsonEncode(<String, dynamic>{
                 'title': _judul,
                 'discussion': _pesan,
                 'id': int.parse(id), 
-            }
+            })
         );
     }
 
@@ -123,7 +123,8 @@ class _FormForumState extends State<FormForum> {
                                     ),
                                     onPressed: () {
                                         if (_formKey.currentState!.validate()) {
-                                            String id = widget.id;
+                                            //masih dummy --? fix this
+                                            String id = '1';//widget.id;
                                             submit(context, id);
                                         }
                                     },

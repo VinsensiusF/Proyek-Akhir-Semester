@@ -32,6 +32,33 @@ class Reply {
         "pk": pk,
         "fields": fields.toJson(),
     };
+
+    static Future<List<Reply>> fetchReply(String idForum) async {
+        //tanyain kalo mau get per-kategori gimana? masukin link-nya parameternya gimana
+        //buat dropdown-nya
+        String id = idForum;
+        print(id);
+        //https://medsos-umkm.up.railway.app/forum/json_reply/'+id
+        var url = Uri.parse('https://medsos-umkm.up.railway.app/forum/json_reply/'+id); 
+        print(url);
+        var response = await http.get(
+            url,
+            headers: {
+                //"Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json",
+            },
+        );
+        print(jsonDecode(utf8.decode(response.bodyBytes)));
+        var data = jsonDecode(utf8.decode(response.bodyBytes));
+
+        List<Reply> replies = [];
+            for (var d in data) {
+                if (d != null) {
+                    replies.add(Reply.fromJson(d));
+                }
+            }
+        return replies;
+    }
 }
 
 class Fields {
