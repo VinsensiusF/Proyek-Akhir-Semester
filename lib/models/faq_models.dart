@@ -44,13 +44,13 @@ class Fields {
   String answer;
 
   factory Fields.fromJson(Map<String, dynamic> json) => Fields(
-    user: json["user"],
+    user: json["user"] == null ? null : json["user"],
     question: json["question"],
     answer: json["answer"],
   );
 
   Map<String, dynamic> toJson() => {
-    "user": user,
+    "user": user == null ? null : user,
     "question": question,
     "answer": answer,
   };
