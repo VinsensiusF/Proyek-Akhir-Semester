@@ -3,7 +3,7 @@ import 'package:pas/pages/faq_page.dart';
 import 'package:pas/widget/drawer.dart';
 import 'dart:convert';
 import 'package:provider/provider.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:pas/utils/utils.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pas/widget/drawer.dart';
@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Search> list = <Search>[];
   var res;
   String _explain = "";
+  CookieRequest request = CookieRequest();
 
   @override
   initState() {
