@@ -47,7 +47,7 @@ class _MyListPageState extends State<MyKategoriDetailPage> {
                         ),
                        
                         child:const Center(
-                          child: Text("Temukan produk dengan kategori yang kamu inginkan disini!", 
+                          child: Text("Temukan toko yang menjual produk dengan kategori yang kamu inginkan disini!", 
                               style: TextStyle(
                                 fontFamily: 'Arial',
                                 fontSize: 14,

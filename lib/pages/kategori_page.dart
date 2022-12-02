@@ -3,6 +3,7 @@ import 'package:pas/main.dart';
 import 'package:pas/widget/drawer.dart';
 import 'package:pas/function/fetch_kategori.dart';
 import 'package:pas/pages/kategori_form_page.dart';
+import 'package:pas/pages/kategori_details_page.dart';
 
 
 class MyKategoriPage extends StatefulWidget {
@@ -21,8 +22,7 @@ class _MyListPageState extends State<MyKategoriPage> {
                 title: const Text('SellerPrism.io'),
             ),
             drawer: const Drawers(),
-            body: Center(
-                child:  FutureBuilder(
+            body: FutureBuilder(
                     future: fetchKategori(),
                     builder: (context, AsyncSnapshot snapshot) {
                         if (snapshot.data == null) {
@@ -55,7 +55,7 @@ class _MyListPageState extends State<MyKategoriPage> {
                                                     context,
                                                     MaterialPageRoute(
                                                     builder: (context) =>
-                                                        MyKategoriFormPage(
+                                                        MyKategoriDetailPage(
                                                     ),
                                                     ));
                                             },
@@ -71,8 +71,33 @@ class _MyListPageState extends State<MyKategoriPage> {
                         }
                     }
                 ),
+                    floatingActionButton: Padding(
+        padding : const EdgeInsets.fromLTRB(40,10,10,10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Align(
+
+            ),
+            Align(
+                alignment: Alignment.bottomLeft,
+                child: FloatingActionButton.extended(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MyKategoriFormPage()
+                      ),
+                    ),
+                label: const Text('Tambah Kategori'),
+                icon: const Icon(Icons.add),
+                ),
+            ),
+          ],
+        )
+        //child: Container(
+        //),
+    ),
             
-        ),
             
 
  
