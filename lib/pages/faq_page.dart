@@ -4,7 +4,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:pas/models/faq_models.dart';
 import 'dart:convert';
 import 'package:provider/provider.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:pas/utils/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:pas/pages/faq_form.dart';
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pas/pages/faq_page.dart';
+import 'package:pas/pages/login_page.dart';
 
 import '../main.dart';
 
@@ -53,6 +54,16 @@ class _DrawerState extends State<Drawers> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => const MyFAQPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Login'),
+                onTap: () {
+                  // Route menu ke halaman to do
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
                   );
                 },
               ),
