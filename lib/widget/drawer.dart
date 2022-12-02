@@ -65,7 +65,6 @@ class _DrawerState extends State<Drawers> {
                 MaterialPageRoute(builder: (context) => const ForumPage()),
               );
             },
->>>>>>> staging
           ),
           ListTile(
             title: const Text('FAQ'),
