@@ -21,7 +21,7 @@ class _NavigationDrawerWidget extends State<NavigationDrawerWidget> {
 
   Future<void> submit(BuildContext context) async {
     //const url = "http://127.0.0.1:8000/auth/logout_flutter/";
-    const url = "http://127.0.0.1:8000/logout_flutter/";
+    const url = "https://medsos-umkm.up.railway.app/login_flutter/";
     final response = await request.logoutAccount(url);
     if (response['status'] == "loggedout") {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
