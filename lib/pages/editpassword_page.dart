@@ -1,19 +1,17 @@
-import 'package:pas/pages/editpassword_page.dart';
 import 'package:pas/pages/profile_page.dart';
 import 'package:pas/widget/drawer.dart';
 import 'package:flutter/material.dart';
 
-class EditProfilePage extends StatefulWidget {
-  const EditProfilePage({super.key});
+class EditPasswordPage extends StatefulWidget {
+  const EditPasswordPage({super.key});
 
   @override
-  State<EditProfilePage> createState() => _EditProfileState();
+  State<EditPasswordPage> createState() => _EditPasswordState();
 }
 
-class _EditProfileState extends State<EditProfilePage> {
+class _EditPasswordState extends State<EditPasswordPage> {
   final _formKey = GlobalKey<FormState>();
-  String _username = "";
-  String _email = "";
+  String _password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +29,16 @@ class _EditProfileState extends State<EditProfilePage> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
+
                 Padding(
                   // Menggunakan padding sebesar 8 pixels
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Username",
-                      hintText: "Enter your new username here ...",
+                      labelText: "Password",
+                      hintText: "Enter your new password here ...",
                       // Menambahkan icon agar lebih intuitif
-                      icon: const Icon(Icons.people),
+                      icon: const Icon(Icons.password),
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
@@ -49,46 +48,14 @@ class _EditProfileState extends State<EditProfilePage> {
                     // Menambahkan behavior saat nama diketik
                     onChanged: (String? value) {
                       setState(() {
-                        _username = value!;
+                        _password = value!;
                       });
                     },
 
                     // Menambahkan behavior saat data disimpan
                     onSaved: (String? value) {
                       setState(() {
-                        _username = value!;
-                      });
-                    },
-
-                  ),
-                ),
-
-                Padding(
-                  // Menggunakan padding sebesar 8 pixels
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Email",
-                      hintText: "Enter your new email here ...",
-                      // Menambahkan icon agar lebih intuitif
-                      icon: const Icon(Icons.email),
-                      // Menambahkan circular border agar lebih rapi
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
-                      ),
-                    ),
-
-                    // Menambahkan behavior saat nama diketik
-                    onChanged: (String? value) {
-                      setState(() {
-                        _email = value!;
-                      });
-                    },
-
-                    // Menambahkan behavior saat data disimpan
-                    onSaved: (String? value) {
-                      setState(() {
-                        _email = value!;
+                        _password = value!;
                       });
                     },
 
@@ -97,25 +64,6 @@ class _EditProfileState extends State<EditProfilePage> {
 
                 Column(
                   children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        // elevation: 15,
-                        backgroundColor: Colors.blue,
-                        onPrimary: Colors.white,
-                        // padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                      ),
-                      child: const Text(
-                        "Edit Password",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const EditPasswordPage()),
-                        );
-                      }),
-
-                const SizedBox(height: 5),
                 
                 TextButton(
                     child: const Text(
@@ -143,7 +91,7 @@ class _EditProfileState extends State<EditProfilePage> {
                                   children: <Widget>[
                                     const Center(child: Text('Saved!')),
                                     const SizedBox(height: 10),
-                                    const Center(child: Text('Your data has successfully changed')),
+                                    const Center(child: Text('Your password has successfully changed')),
                                     const SizedBox(height: 10),
                                     TextButton(
                                       onPressed: () {
