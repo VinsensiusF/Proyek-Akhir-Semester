@@ -41,7 +41,7 @@ class CookieRequest {
     local.setString("cookies", cookies);
   }
 
-  Future<dynamic> login(String url, String email1, String password) async {
+  Future<dynamic> login(String url, String username, String password) async {
     if (kIsWeb) {
       dynamic c = _client;
       c.withCredentials = true;
@@ -49,26 +49,28 @@ class CookieRequest {
 
     http.Response response = await _client.post(Uri.parse(url),
         body: jsonEncode(<String, String>{
-          'email': email1,
+          'username': username,
           'password': password,
         }),
         headers: headers);
 
     _updateCookie(response);
 
+    print(response.statusCode);
     if (response.statusCode == 200) {
       //print(json.decode(response.body));
-      username = json.decode(response.body)['data']['user']['username'];
-      email = json.decode(response.body)['data']['user']['email'];
-      is_admin = json.decode(response.body)['data']['user']['is_admin'];
-      is_subscribed =
-          json.decode(response.body)['data']['user']['is_subscribed'];
-      id = json.decode(response.body)['data']['user']['id'];
+      // username = json.decode(response.body)['data']['user']['username'];
+      // email = json.decode(response.body)['data']['user']['email'];
+      // is_admin = json.decode(response.body)['data']['user']['is_admin'];
+      // is_subscribed =
+      //     json.decode(response.body)['data']['user']['is_subscribed'];
+      // id = json.decode(response.body)['data']['user']['id'];
       loggedIn = true;
     } else {
       loggedIn = false;
     }
 
+    print(loggedIn);
     return json.decode(response.body); // Expects and returns JSON request body
   }
 
@@ -146,8 +148,7 @@ class CookieRequest {
         headers: <String, String>{'Content-Type': 'application/json'},
         body: jsonEncode(<String, dynamic>{
           'loggedIn': loggedIn,
-        })
-    );
+        }));
     print(json.decode(response.body));
     print(response.statusCode);
     if (response.statusCode == 200) {

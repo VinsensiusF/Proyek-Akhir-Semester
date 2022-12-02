@@ -145,24 +145,6 @@ class _State extends State<SignupSellerPage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    controller: controllerDeskripsiUsaha,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.description),
-                      labelText: "Deskripsi Usaha",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
-                    ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Deskripsi Usaha tidak boleh kosong';
-                      }
-                      return null;
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
                     controller: controllerNamaUsaha,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.business),
@@ -257,7 +239,7 @@ class _State extends State<SignupSellerPage> {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()){
                           //const url = "http://127.0.0.1:8000/auth/signup_flutter/";
-                          const url = "https://project-channel.herokuapp.com/auth/signup_flutter/";
+                          const url = "https://medsos-umkm.up.railway.app/signup_flutter/";
                           final response = await http.post(Uri.parse(url),
                               headers: <String, String>{
                                 'Content-Type': 'application/json; charset=UTF-8',
@@ -266,12 +248,6 @@ class _State extends State<SignupSellerPage> {
                               'email': controllerEmail.text,
                               'username': controllerUsername.text,
                               'password': controllerPassword.text,
-                              'nama': controllerNama.text,
-                              'nama_usaha': controllerNamaUsaha.text,
-                              'deskripsi_usaha': controllerDeskripsiUsaha.text,
-                              'alamat_usaha' : controllerAlamat.text,
-                              'kontak': controllerKontak.text,
-                              'link_usaha' : controllerLink.text
                               })
                           );
 
