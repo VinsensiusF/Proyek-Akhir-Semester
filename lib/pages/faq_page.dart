@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:http/http.dart' as http;
+import 'package:pas/pages/faq_form.dart';
 
 class MyFAQPage extends StatefulWidget {
   const MyFAQPage({super.key});
@@ -50,115 +51,60 @@ class _MyFAQPageState extends State<MyFAQPage> {
       ),
       drawer: const Drawers(),
       body: Container(
-        child: Column(
-          children: [
-            FutureBuilder(
-              future: fetchToDo(),
-              builder: (context, AsyncSnapshot snapshot) {
-                if (snapshot.data == null) {
-                  return const Center(child: CircularProgressIndicator());
-                } else {
-                  if (!snapshot.hasData) {
-                    return Column(
-                      children: const [
-                        Text(
-                          "Tidak ada to do list :(",
-                          style:
-                              TextStyle(color: Color(0xff59A5D8), fontSize: 20),
-                        ),
-                        SizedBox(height: 8),
-                      ],
-                    );
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              FutureBuilder(
+                future: fetchToDo(),
+                builder: (context, AsyncSnapshot snapshot) {
+                  if (snapshot.data == null) {
+                    return const Center(child: CircularProgressIndicator());
                   } else {
-                    return ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (_, index) => Padding(
-                              padding: const EdgeInsets.all(30.0),
-                              child: GFAccordion(
-                                title: snapshot.data![index].fields.question,
-                                content: snapshot.data![index].fields.answer,
-                                titleBorder: Border.all(),
-                              ),
-                            ));
+                    if (!snapshot.hasData) {
+                      return Column(
+                        children: const [
+                          Text(
+                            "Tidak ada to do list :(",
+                            style:
+                            TextStyle(color: Color(0xff59A5D8), fontSize: 20),
+                          ),
+                          SizedBox(height: 8),
+                        ],
+                      );
+                    } else {
+                      return ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (_, index) => Padding(
+                            padding: const EdgeInsets.all(30.0),
+                            child: GFAccordion(
+                              title: snapshot.data![index].fields.question,
+                              content: snapshot.data![index].fields.answer,
+                              titleBorder: Border.all(),
+                            ),
+                          ));
+                    }
                   }
-                }
-              },
-            ),
-            Container(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: "Pertanyaan",
-                      ),
-                      onChanged: (String? value) {
-                        setState(() {
-                          _pertanyaan = value!;
-                        });
-                      },
-                      // Menambahkan behavior saat data disimpan
-                      onSaved: (String? value) {
-                        setState(() {
-                          _pertanyaan = value!;
-                        });
-                      },
-                      // Validator sebagai validasi form
-                      validator: (String? value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Nama post tidak boleh kosong!';
-                        }
-                        return null;
-                      },
+                },
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: FloatingActionButton.extended(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MyFAQForm()
                     ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: "Jawaban",
-                      ),
-                      onChanged: (String? value) {
-                        setState(() {
-                          _jawaban = value!;
-                        });
-                      },
-                      // Menambahkan behavior saat data disimpan
-                      onSaved: (String? value) {
-                        setState(() {
-                          _jawaban = value!;
-                        });
-                      },
-                      // Validator sebagai validasi form
-                      validator: (String? value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Jawaban tidak boleh kosong!';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextButton(
-                        onPressed: () async {
-                          if (_formKey.currentState!.validate()) {
-                            const AlertDialog(
-                              title: Text("POST BERHASIL"),
-                              content: Text("FAQ DITAMBAHKAN"),
-                            );
-                            const url =
-                                "https://medsos-umkm.up.railway.app/adminfaq/create_faq_flutter";
-                            final response = await request.post(url, {
-                              "question": _pertanyaan,
-                              "answer": _jawaban,
-                            });
-                          }
-                        },
-                        child: const Text("Submit")),
-                  ],
+                  ),
+                  label: const Text('Buat FAQ'),
+                  icon: const Icon(Icons.add),
                 ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        )
       ),
     );
   }

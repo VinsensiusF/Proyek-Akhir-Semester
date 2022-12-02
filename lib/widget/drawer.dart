@@ -3,6 +3,10 @@ import 'package:pas/pages/faq_page.dart';
 
 import '../main.dart';
 
+import '../main.dart';
+import 'package:pas/pages/kategori_page.dart';
+import 'package:pas/pages/forum_page.dart';
+
 class Drawers extends StatefulWidget {
   const Drawers({ Key? key }) : super(key: key);
 
@@ -30,7 +34,7 @@ class _DrawerState extends State<Drawers> {
                 title: const Text("Lihat Kategori"),
                 onTap: () {
                   Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                    MaterialPageRoute(builder: (context) => const MyKategoriPage()),
                   );
                 },
               ),
@@ -38,7 +42,7 @@ class _DrawerState extends State<Drawers> {
                 title: const Text("Forum"),
                 onTap: () {
                   Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                    MaterialPageRoute(builder: (context) => const ForumPage()),
                   );
                 },
               ),
