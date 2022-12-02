@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pas/widget/drawer.dart';
 import 'package:pas/pages/kategori_page.dart';
-
+import 'package:pas/pages/forum_page.dart';
 
 import 'models/models_search_home.dart';
 
@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     onPressed: () {
                                         Navigator.pushReplacement(
                                             context,
-                                            MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
+                                            MaterialPageRoute(builder: (context) => const ForumPage()),
                                         );
                                     },
                                     style: TextButton.styleFrom(
