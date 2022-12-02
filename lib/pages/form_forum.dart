@@ -124,6 +124,7 @@ class _FormForumState extends State<FormForum> {
                                     onPressed: () {
                                         if (_formKey.currentState!.validate()) {
                                             //masih dummy --? fix this
+                                            //have to add alert dialog
                                             String id = '1';//widget.id;
                                             submit(context, id);
                                         }

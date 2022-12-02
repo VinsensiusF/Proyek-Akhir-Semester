@@ -97,6 +97,7 @@ class _FormReplyState extends State<FormReply> {
                               onPressed: () {
                                   if (_formKey.currentState!.validate()) {
                                     //masih dummy --> fix this
+                                    //have to add alert dialog
                                       String id = '1';//widget.id;
                                       submit(context, id);
                                   }
