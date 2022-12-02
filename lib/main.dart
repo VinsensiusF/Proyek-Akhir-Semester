@@ -251,9 +251,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const MyHomePage(
-                              title: 'SellerPrism.io',
-                            )),
+                        builder: (context) => const MyFAQPage()),
                   );
                 },
                 style: TextButton.styleFrom(
