@@ -79,46 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
             appBar: AppBar(
                 title: const Text('SellerPrism.io'),
             ),
-            drawer: Drawer(
-              child: Column(
-                children: [
-                  ListTile(
-                    title: const Text("Home Page"),
-                    onTap: () {
-                      Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: const Text("Lihat Kategori"),
-                    onTap: () {
-                      Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyKategoriPage()),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: const Text("Forum"),
-                    onTap: () {
-                      Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: const Text('FAQ'),
-                    onTap: () {
-                        // Route menu ke halaman to do
-                        Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'SellerPrism.io',)),
-                        );
-                    },
-                  ),
-                ],
-              ),
-            ),
+            drawer: const Drawers(),
             body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
