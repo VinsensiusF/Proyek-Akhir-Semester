@@ -25,3 +25,4 @@ Future<List<Kategori>> fetchKategori() async {
 
   return listKategori;
 }
+
