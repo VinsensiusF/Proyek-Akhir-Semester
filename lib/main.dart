@@ -3,7 +3,7 @@ import 'package:pas/pages/faq_page.dart';
 import 'package:pas/widget/drawer.dart';
 import 'dart:convert';
 import 'package:provider/provider.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:pas/utils/utils.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:pas/widget/drawer.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         },
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'SellerPrism.io',
           theme: ThemeData(
             // This is the theme of your application.
             //
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             scaffoldBackgroundColor: Colors.white,
           ),
-          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          home: const MyHomePage(title: 'SellerPrism.io'),
         ));
   }
 }
@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Search> list = <Search>[];
   var res;
   String _explain = "";
+  CookieRequest request = CookieRequest();
 
   @override
   initState() {
@@ -203,9 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const MyHomePage(
-                              title: 'SellerPrism.io',
-                            )),
+                        builder: (context) => const MyKategoriPage()),
                   );
                 },
                 style: TextButton.styleFrom(
@@ -247,8 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyFAQPage()),
+                    MaterialPageRoute(builder: (context) => const MyFAQPage()),
                   );
                 },
                 style: TextButton.styleFrom(
