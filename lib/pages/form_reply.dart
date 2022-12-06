@@ -3,6 +3,7 @@ import 'package:pas/models/reply_model.dart';
 import 'package:pas/models/forum_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:pas/pages/forum_page.dart';
 
 class FormReply extends StatefulWidget {
     const FormReply({Key? key, required this.forumModel}) : super(key: key);
@@ -100,6 +101,38 @@ class _FormReplyState extends State<FormReply> {
                                     //have to add alert dialog
                                       String id = '1';//widget.id;
                                       submit(context, id);
+                                      showDialog(
+                                          context: context,
+                                          builder: (context){
+                                              return Dialog(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                  ),
+                                                  elevation: 15,
+                                                  child: Container(
+                                                      child: ListView(
+                                                          padding: const EdgeInsets.only(top: 20, bottom: 20),
+                                                          shrinkWrap: true,
+                                                          children: <Widget> [
+                                                              SizedBox(height: 20),
+                                                              Text(
+                                                                  'Reply berhasil dibuat!',
+                                                                  textAlign: TextAlign.center,
+                                                              ),
+                                                              SizedBox(height: 20),
+                                                              TextButton(
+                                                                  onPressed: () {
+                                                                      Navigator.push(context,
+                                                                              MaterialPageRoute(builder: (context) => ForumPage()));
+                                                                  },
+                                                                  child: Text('Kembali'),
+                                                              ), 
+                                                          ],
+                                                      ),
+                                                  ),
+                                              );
+                                          },
+                                      );
                                   }
                               },
                           ),

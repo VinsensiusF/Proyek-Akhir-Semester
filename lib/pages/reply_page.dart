@@ -71,14 +71,6 @@ class _ReplyPageState extends State<ReplyPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                              "${snapshot.data![index].fields.title}",
-                              style: const TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                              ),
-                          ),
-                          const SizedBox(height: 5),
-                          Text(
                               "${snapshot.data![index].fields.username} | ${snapshot.data![index].fields.time}",
                               style: const TextStyle(
                                   fontSize: 13.0,
