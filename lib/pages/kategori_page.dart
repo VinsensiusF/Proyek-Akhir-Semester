@@ -27,6 +27,7 @@ class _MyListPageState extends State<MyKategoriPage> {
                     builder: (context, AsyncSnapshot snapshot) {
                         if (snapshot.data == null) {
                             return const Center(child: CircularProgressIndicator());
+
                         } else {
                             if (!snapshot.hasData) {
                                 return Column(
