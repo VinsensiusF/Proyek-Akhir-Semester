@@ -3,6 +3,7 @@ import 'package:pas/models/forum_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:pas/pages/forum_page.dart';
+import 'package:pas/utils/utils.dart';
 
 class FormForum extends StatefulWidget {
     const FormForum({super.key});
@@ -125,9 +126,8 @@ class _FormForumState extends State<FormForum> {
                                     onPressed: () {
                                         if (_formKey.currentState!.validate()) {
                                             //masih dummy --? fix this
-                                            //have to add alert dialog
                                             String id = '1';//widget.id;
-                                            //String id = widget.id;
+                                            //String id = CookieRequest.id.toString();
                                             submit(context, id);
                                             showDialog(
                                                 context: context,
