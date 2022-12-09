@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:pas/utils/utils.dart';
 import 'package:http/http.dart' as http;
+import 'package:pas/pages/faq_page.dart';
 
 class MyFAQForm extends StatefulWidget {
   const MyFAQForm({super.key});
@@ -23,6 +24,7 @@ class _MyFAQFormState extends State<MyFAQForm> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    print(request.cookies);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -91,17 +93,23 @@ class _MyFAQFormState extends State<MyFAQForm> {
                 ),
                 TextButton(
                     onPressed: () async {
+                      const AlertDialog(
+                        title: Text("POST BERHASIL"),
+                        content: Text("FAQ DITAMBAHKAN"),
+                      );
                       if (_formKey.currentState!.validate()) {
-                        const AlertDialog(
-                          title: Text("POST BERHASIL"),
-                          content: Text("FAQ DITAMBAHKAN"),
-                        );
                         const url =
-                            "https://medsos-umkm.up.railway.app/adminfaq/create_faq_flutter";
+                            "https://medsos-umkm.up.railway.app/adminfaq/create_faq_flutter/";
                         final response = await request.post(url, {
                           "question": _pertanyaan,
                           "answer": _jawaban,
                         });
+                        if (request.cookies != null) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const MyFAQPage()),
+                          );
+                        }
                       }
                     },
                     child: const Text("Submit")),
@@ -112,5 +120,4 @@ class _MyFAQFormState extends State<MyFAQForm> {
       ),
     );
   }
-
 }
