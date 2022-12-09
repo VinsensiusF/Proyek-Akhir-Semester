@@ -56,6 +56,16 @@ class _DrawerState extends State<Drawers> {
                   );
                 },
               ),
+              ListTile(
+                title: const Text('Login'),
+                onTap: () {
+                  // Route menu ke halaman to do
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyFAQPage()),
+                  );
+                },
+              ),
             ],
           ),
         )
