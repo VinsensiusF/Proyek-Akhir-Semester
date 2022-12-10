@@ -123,7 +123,7 @@ class _FormReplyState extends State<FormReply> {
                                                               TextButton(
                                                                   onPressed: () {
                                                                       Navigator.push(context,
-                                                                              MaterialPageRoute(builder: (context) => ForumPage()));
+                                                                              MaterialPageRoute(builder: (context) => ForumPage('1')));
                                                                   },
                                                                   child: Text('Kembali'),
                                                               ), 

@@ -225,7 +225,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const ForumPage()),
+                    MaterialPageRoute(builder: (context) => ForumPage('1')),
                   );
                 },
                 style: TextButton.styleFrom(

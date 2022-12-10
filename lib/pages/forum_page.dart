@@ -9,7 +9,8 @@ import 'dart:convert';
 var detailForum = [];
 
 class ForumPage extends StatefulWidget {
-  const ForumPage({Key? key}) : super(key: key);
+    final String id;
+    ForumPage(this.id) : super(key: null);
 
   @override
   State<ForumPage> createState() => _ForumPageState();
@@ -118,7 +119,7 @@ class _ForumPageState extends State<ForumPage> {
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => FormForum()
+                          builder: (context) => FormForum(widget.id)
                       ),
                     ),
                 label: const Text('Buat Forum'),

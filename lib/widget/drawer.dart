@@ -9,6 +9,9 @@ import '../main.dart';
 import 'package:pas/pages/kategori_page.dart';
 import 'package:pas/pages/forum_page.dart';
 
+import 'package:provider/provider.dart';
+import 'package:pas/utils/utils.dart';
+
 import '../pages/form_toko.dart';
 import '../pages/kategori_details_page.dart';
 
@@ -20,6 +23,35 @@ class Drawers extends StatefulWidget {
 }
 
 class _DrawerState extends State<Drawers> {
+  CookieRequest request = CookieRequest();
+  String username = "";
+  String email = "";
+  bool is_admin = false;
+  bool is_subscribed = false;
+  int id = 0;
+  bool loggedIn = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final _request = Provider.of<CookieRequest>(context, listen: false);
+
+      if (!_request.loggedIn) {
+      } else {
+        setState(() {
+          request = _request;
+          loggedIn = _request.loggedIn;
+          username = _request.username;
+          email = _request.email;
+          is_admin = _request.is_admin;
+          is_subscribed = _request.is_subscribed;
+          id = _request.id;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -62,7 +94,7 @@ class _DrawerState extends State<Drawers> {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const ForumPage()),
+                MaterialPageRoute(builder: (context) => ForumPage(id.toString())),
               );
             },
           ),
