@@ -18,8 +18,6 @@ class MyFAQPage extends StatefulWidget {
 
 class _MyFAQPageState extends State<MyFAQPage> {
   final _formKey = GlobalKey<FormState>();
-  String _pertanyaan = "";
-  String _jawaban = "";
 
   @override
   Widget build(BuildContext context) {
