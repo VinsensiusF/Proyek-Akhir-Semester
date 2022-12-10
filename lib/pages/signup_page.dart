@@ -18,10 +18,9 @@ class _State extends State<SignupPage> {
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
   TextEditingController controllerUsername = TextEditingController();
-  TextEditingController controllerNama = TextEditingController();
-  TextEditingController controllerInstitusi = TextEditingController();
-  TextEditingController controllerJenisKelamin = TextEditingController();
-  TextEditingController controllerKontak = TextEditingController();
+
+  String? jenisUser;
+  List<String> listJenisUser = ['Daftar Seller', 'Daftar Buyer'];
 
   bool isPasswordVisible = false;
   void togglePasswordView() {
@@ -119,76 +118,29 @@ class _State extends State<SignupPage> {
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    controller: controllerNama,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
-                      labelText: "Nama Lengkap",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
-                    ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Nama tidak boleh kosong';
-                      }
-                      return null;
+                DropdownButtonHideUnderline(
+                  child: DropdownButton(
+                    value: jenisUser,
+                    icon: const Icon(Icons.arrow_drop_down),
+                    items: listJenisUser.map((String items) {
+                      return DropdownMenuItem(
+                        value: items,
+                        child: Text(items),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        jenisUser = newValue!;
+                      });
                     },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    controller: controllerJenisKelamin,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.male),
-                      labelText: "Jenis Kelamin",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
+                    hint: Container(
+                      width: 150, //and here
+                      child: const Text(
+                        "Pilih Jenis",
+                        style: TextStyle(color: Colors.grey),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Jenis kelamin tidak boleh kosong';
-                      }
-                      return null;
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    controller: controllerInstitusi,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.business),
-                      labelText: "Asal Institusi",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
-                    ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Asal institusi tidak boleh kosong';
-                      }
-                      return null;
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextFormField(
-                    controller: controllerKontak,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.phone),
-                      labelText: "Kontak",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
-                    ),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Kontak tidak boleh kosong';
-                      }
-                      return null;
-                    },
                   ),
                 ),
                 Padding(
@@ -198,21 +150,19 @@ class _State extends State<SignupPage> {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()){
                           //const url = "http://127.0.0.1:8000/auth/signup_flutter/";
-                          const url = "https://project-channel.herokuapp.com/auth/signup_flutter/";
+                          const url = "https://medsos-umkm.up.railway.app/signup_flutter/";
                           final response = await http.post(Uri.parse(url),
                               headers: <String, String>{
                                 'Content-Type': 'application/json; charset=UTF-8',
                               },
-                          body: jsonEncode(<String, String>{
-                              'email': controllerEmail.text,
+                          body: jsonEncode(<String, String?>{
                               'username': controllerUsername.text,
+                              'email': controllerEmail.text,
                               'password': controllerPassword.text,
-                              'nama': controllerNama.text,
-                              'institusi': controllerInstitusi.text,
-                              'jenis_kelamin': controllerJenisKelamin.text,
-                              'kontak': controllerKontak.text
+                              'jenisuser': jenisUser
                               })
                           );
+                          
                           print(response);
                           print(response.body);
                           Map<String, dynamic> data = jsonDecode(response.body);

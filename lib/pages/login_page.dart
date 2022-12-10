@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pas/pages/daftar_proyek_page.dart';
+import 'package:pas/main.dart';
 import 'package:pas/pages/signup_page.dart';
+import 'package:pas/widget/drawer.dart';
 import 'dart:core';
 import 'package:provider/provider.dart';
 import 'package:pas/utils/utils.dart';
@@ -12,7 +13,7 @@ class LoginPage extends StatefulWidget {
 
 class _State extends State<LoginPage> {
   final _loginFormKey = GlobalKey<FormState>();
-  final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerUsername = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
 
   bool isPasswordVisible = false;
@@ -29,6 +30,7 @@ class _State extends State<LoginPage> {
         appBar: AppBar(
           title: const Text('Login'),
         ),
+        drawer: const Drawers(),
         body: Padding(
             padding: const EdgeInsets.all(30),
             child: ListView(
@@ -36,144 +38,143 @@ class _State extends State<LoginPage> {
                 Container(
                     alignment: Alignment.center,
                     padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-                    child: const Text('Masuk ke Akun Pengguna',
+                    child: const Text(
+                      'Masuk ke Akun Pengguna',
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w500,
                           fontSize: 22),
                     )),
                 Form(
-                  key: _loginFormKey,
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(250, 250, 250, 0.95),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: TextFormField(
-                            controller: _controllerEmail,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0)),
-                              hintText: 'Email',
-                              prefixIcon: Icon(Icons.email),
-                              hintStyle: TextStyle(
-                                color: Color.fromRGBO(200, 200, 200, 1),
+                    key: _loginFormKey,
+                    child: Container(
+                        padding: EdgeInsets.all(20),
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color.fromRGBO(250, 250, 250, 0.95),
+                                borderRadius: BorderRadius.circular(5),
                               ),
-                            ),
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Email tidak boleh kosong";
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(250, 250, 250, 0.95),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: TextFormField(
-                            controller: _controllerPassword,
-                            obscureText: !isPasswordVisible,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5.0)),
-                              hintText: 'Password',
-                              prefixIcon: Icon(Icons.lock),
-                              suffixIcon: IconButton(
-                                color: Color.fromRGBO(200, 200, 200, 1),
-                                splashRadius: 1,
-                                icon: Icon(isPasswordVisible ?
-                                Icons.visibility_outlined :
-                                Icons.visibility_off_outlined
+                              child: TextFormField(
+                                controller: _controllerUsername,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5.0)),
+                                  hintText: 'Username',
+                                  prefixIcon: Icon(Icons.person),
+                                  hintStyle: TextStyle(
+                                    color: Color.fromRGBO(200, 200, 200, 1),
+                                  ),
                                 ),
-                                onPressed: togglePasswordView,
-                              ),
-                              hintStyle: TextStyle(
-                                color: Color.fromRGBO(200, 200, 200, 1),
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return "Email tidak boleh kosong";
+                                  }
+                                  return null;
+                                },
                               ),
                             ),
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Password tidak boleh kosong";
-                              }
-                              return null;
-                            },
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Container(
-                          width: double.infinity,
-                          child: TextButton(
-                            style: ButtonStyle(
-                              backgroundColor:
-                              MaterialStateProperty.all<Color>(
-                                  Colors.deepPurple
+                            SizedBox(height: 20),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color.fromRGBO(250, 250, 250, 0.95),
+                                borderRadius: BorderRadius.circular(5),
                               ),
-                              foregroundColor:
-                                MaterialStateProperty.all<Color>(
-                                    Colors.white
+                              child: TextFormField(
+                                controller: _controllerPassword,
+                                obscureText: !isPasswordVisible,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(5.0)),
+                                  hintText: 'Password',
+                                  prefixIcon: Icon(Icons.lock),
+                                  suffixIcon: IconButton(
+                                    color: Color.fromRGBO(200, 200, 200, 1),
+                                    splashRadius: 1,
+                                    icon: Icon(isPasswordVisible
+                                        ? Icons.visibility_outlined
+                                        : Icons.visibility_off_outlined),
+                                    onPressed: togglePasswordView,
+                                  ),
+                                  hintStyle: TextStyle(
+                                    color: Color.fromRGBO(200, 200, 200, 1),
+                                  ),
                                 ),
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return "Password tidak boleh kosong";
+                                  }
+                                  return null;
+                                },
+                              ),
                             ),
-                            onPressed: () async {
-                              if (_loginFormKey.currentState!.validate()) {
-                                //const url = "http://127.0.0.1:8000/auth/login_flutter/";
-                                const url = "https://project-channel.herokuapp.com/auth/login_flutter/";
-
-                                final response = await request.login(url,
-                                  _controllerEmail.text,
-                                  _controllerPassword.text
-                                );
-                                if (request.loggedIn){
-                                  showAlertDialog2(context);
-                                }
-                                else {
-                                  showAlertDialog(context);
-                                }
-                              }
-                              else {
-                                print("tidak valid");
-                              }
-                            },
-                            child: Text("Masuk"),
-                          )
-                        )
-                      ],
-                    )
-                  )
-                ),
+                            SizedBox(height: 20),
+                            Container(
+                                width: double.infinity,
+                                child: TextButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.deepPurple),
+                                    foregroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.white),
+                                  ),
+                                  onPressed: () async {
+                                    if (_loginFormKey.currentState!
+                                        .validate()) {
+                                      //const url = "http://127.0.0.1:8000/auth/login_flutter/";
+                                      const url = "https://medsos-umkm.up.railway.app/login_flutter/";
+                                      final response = await request.login(
+                                          url,
+                                          _controllerUsername.text,
+                                          _controllerPassword.text);
+                                          
+                                      print(_controllerUsername.text);
+                                      print(_controllerPassword.text);
+                                      
+                                      if (request.loggedIn) {
+                                        showAlertDialog2(context);
+                                      } else {
+                                        showAlertDialog(context);
+                                      }
+                                    } else {
+                                      print("tidak valid");
+                                    }
+                                  },
+                                  child: Text("Masuk"),
+                                ))
+                          ],
+                        ))),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    
+                    
                     TextButton(
                       child: const Text(
                         'Daftar disini',
                       ),
+                      
                       onPressed: () {
                         //signup screen
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => SignupPage(),
                         ));
-                      },
+                      },  
                     ),
-                    const Text('apabila tidak memiliki akun'),
+                    const Text('Jika belum memiliki akun'),
                   ],
-                  mainAxisAlignment: MainAxisAlignment.center,
                 )
               ],
-            )
-        )
-    );
+            )));
   }
 }
-
 
 showAlertDialog(BuildContext context) {
   // set up the button
@@ -181,11 +182,7 @@ showAlertDialog(BuildContext context) {
     child: Text("Coba Lagi"),
     onPressed: () {
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => LoginPage()
-          )
-      );
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
     },
   );
 
@@ -213,11 +210,7 @@ showAlertDialog2(BuildContext context) {
     child: Text("Close"),
     onPressed: () {
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => DaftarProyekPage()
-          )
-      );
+          context, MaterialPageRoute(builder: (context) => MyApp()));
     },
   );
 
