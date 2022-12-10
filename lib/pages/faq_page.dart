@@ -33,7 +33,7 @@ class _MyFAQPageState extends State<MyFAQPage> {
         padding: EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
-            children: <Widget> [
+            children: [
               Align(
                 alignment: Alignment.center,
                 child: FloatingActionButton.extended(
@@ -68,18 +68,7 @@ class _MyFAQPageState extends State<MyFAQPage> {
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           itemCount: snapshot.data!.length,
-                          itemBuilder: (_, index) => Padding(
-                            padding: const EdgeInsets.all(30.0),
-                            child: GFAccordion(
-                              title: snapshot.data![index].fields.question,
-                              content: snapshot.data![index].fields.answer,
-                              titleBorder: Border.all(),
-                              titlePadding: EdgeInsets.all(18.0),
-                              contentPadding: EdgeInsets.all(20.0),
-                              titleBorderRadius: BorderRadius.circular(20),
-                              collapsedTitleBackgroundColor: Colors.white10,
-                            ),
-                          ));
+                          itemBuilder: (_, index) => NullFAQCheck(_, index, snapshot));
                     }
                   }
                 },
@@ -88,6 +77,25 @@ class _MyFAQPageState extends State<MyFAQPage> {
           ),
         ),
       )),
+    );
+  }
+}
+
+Widget NullFAQCheck(BuildContext _, int index, AsyncSnapshot snapshot) {
+  if (snapshot.data![index].fields.question == "" && snapshot.data![index].fields.answer == "") {
+    return Container();
+  } else {
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: GFAccordion(
+        title: snapshot.data![index].fields.question,
+        content: snapshot.data![index].fields.answer,
+        titleBorder: Border.all(),
+        titlePadding: EdgeInsets.all(18.0),
+        contentPadding: EdgeInsets.all(20.0),
+        titleBorderRadius: BorderRadius.circular(20),
+        collapsedTitleBackgroundColor: Colors.white10,
+      ),
     );
   }
 }
