@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:pas/utils/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:pas/pages/faq_form.dart';
+import 'package:pas/function/fetch_faq.dart';
 
 class MyFAQPage extends StatefulWidget {
   const MyFAQPage({super.key});
@@ -17,29 +18,6 @@ class MyFAQPage extends StatefulWidget {
 
 class _MyFAQPageState extends State<MyFAQPage> {
   final _formKey = GlobalKey<FormState>();
-  String _pertanyaan = "";
-  String _jawaban = "";
-
-  Future<List<FaqModel>> fetchToDo() async {
-    var url = Uri.parse('https://medsos-umkm.up.railway.app/adminfaq/json/');
-    var response = await http.get(
-      url,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-    );
-    // melakukan decode response menjadi bentuk json
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
-
-    List<FaqModel> listFAQ = [];
-    for (var d in data) {
-      if (d != null) {
-        listFAQ.add(FaqModel.fromJson(d));
-      }
-    }
-    return listFAQ;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +29,24 @@ class _MyFAQPageState extends State<MyFAQPage> {
       ),
       drawer: const Drawers(),
       body: Container(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
+          child: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: SingleChildScrollView(
           child: Column(
-            children: [
+            children: <Widget> [
+              Align(
+                alignment: Alignment.center,
+                child: FloatingActionButton.extended(
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyFAQForm()),
+                  ),
+                  label: const Text('Buat FAQ'),
+                  icon: const Icon(Icons.add),
+                ),
+              ),
               FutureBuilder(
-                future: fetchToDo(),
+                future: fetchFAQ(),
                 builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.data == null) {
                     return const Center(child: CircularProgressIndicator());
@@ -74,6 +64,7 @@ class _MyFAQPageState extends State<MyFAQPage> {
                       );
                     } else {
                       return ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           itemCount: snapshot.data!.length,
@@ -93,23 +84,10 @@ class _MyFAQPageState extends State<MyFAQPage> {
                   }
                 },
               ),
-              Align(
-                alignment: Alignment.center,
-                child: FloatingActionButton.extended(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => MyFAQForm()
-                    ),
-                  ),
-                  label: const Text('Buat FAQ'),
-                  icon: const Icon(Icons.add),
-                ),
-              ),
             ],
           ),
-        )
-      ),
+        ),
+      )),
     );
   }
 }

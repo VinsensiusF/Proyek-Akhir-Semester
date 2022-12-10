@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:pas/utils/utils.dart';
 import 'package:http/http.dart' as http;
+import 'package:pas/pages/faq_page.dart';
 
 class MyFAQForm extends StatefulWidget {
   const MyFAQForm({super.key});
@@ -23,6 +24,7 @@ class _MyFAQFormState extends State<MyFAQForm> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    print(request.cookies);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -31,11 +33,22 @@ class _MyFAQFormState extends State<MyFAQForm> {
       drawer: const Drawers(),
       body: Container(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(30.0),
           child: Form(
             key: _formKey,
             child: Column(
               children: [
+                Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    child: const Text(
+                      'Tambahkan Pertanyaan',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 22),
+                    )),
+                SizedBox(height: 30, width: 30,),
                 TextFormField(
                   decoration: const InputDecoration(
                     hintText: "Apa itu SellerPrism.io?",
@@ -89,28 +102,67 @@ class _MyFAQFormState extends State<MyFAQForm> {
                     return null;
                   },
                 ),
-                TextButton(
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
+                SizedBox(height: 30, width: 30,),
+                Container(
+                  width: 100,
+                  child: TextButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                        MaterialStateProperty.all<Color>(
+                            Colors.blue),
+                        foregroundColor:
+                        MaterialStateProperty.all<Color>(
+                            Colors.white),
+                      ),
+                      onPressed: () async {
                         const AlertDialog(
                           title: Text("POST BERHASIL"),
                           content: Text("FAQ DITAMBAHKAN"),
                         );
-                        const url =
-                            "https://medsos-umkm.up.railway.app/adminfaq/create_faq_flutter";
-                        final response = await request.post(url, {
-                          "question": _pertanyaan,
-                          "answer": _jawaban,
-                        });
-                      }
-                    },
-                    child: const Text("Submit")),
+                        if (_formKey.currentState!.validate()) {
+                          const url =
+                              "https://medsos-umkm.up.railway.app/adminfaq/create_faq_flutter/";
+                          final response = await request.post(url, {
+                            "question": _pertanyaan,
+                            "answer": _jawaban,
+                          });
+                          if (request.cookies != null) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => const MyFAQPage()),
+                            );
+                          }
+                        }
+                      },
+                      child: const Text("Submit")),
+                ),
               ],
             ),
           ),
         )
       ),
+      floatingActionButton: Padding(
+          padding : const EdgeInsets.fromLTRB(40,10,10,10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: FloatingActionButton(
+                  child: const Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MyFAQPage()
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          )
+        //child: Container(
+        //),
+      ),
     );
   }
-
 }
