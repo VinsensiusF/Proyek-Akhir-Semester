@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:pas/widget/drawer.dart';
@@ -20,11 +21,21 @@ class _MyFAQFormState extends State<MyFAQForm> {
   final _formKey = GlobalKey<FormState>();
   String _pertanyaan = "";
   String _jawaban = "";
+  int count = 0;
+
+  void _incrementClicked() {
+    setState(() {
+      count++;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    String url2 = "https://medsos-umkm.up.railway.app/adminfaq/create_faq_flutter/";
     print(request.cookies);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -115,23 +126,22 @@ class _MyFAQFormState extends State<MyFAQForm> {
                             Colors.white),
                       ),
                       onPressed: () async {
-                        const AlertDialog(
-                          title: Text("POST BERHASIL"),
-                          content: Text("FAQ DITAMBAHKAN"),
-                        );
                         if (_formKey.currentState!.validate()) {
-                          const url =
-                              "https://medsos-umkm.up.railway.app/adminfaq/create_faq_flutter/";
-                          final response = await request.post(url, {
-                            "question": _pertanyaan,
-                            "answer": _jawaban,
+                          postDummy(request, url2);
+                          Timer(Duration(seconds:3),() async {
+                            const url =
+                                "https://medsos-umkm.up.railway.app/adminfaq/create_faq_flutter/";
+                            final response = await request.post(url, {
+                              "question": _pertanyaan,
+                              "answer": _jawaban,
+                            });
+                            if (request.cookies != null) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => MyFAQPage()),
+                              );
+                            }
                           });
-                          if (request.cookies != null) {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => const MyFAQPage()),
-                            );
-                          }
                         }
                       },
                       child: const Text("Submit")),
@@ -166,3 +176,11 @@ class _MyFAQFormState extends State<MyFAQForm> {
     );
   }
 }
+
+void postDummy(CookieRequest request, String url2) async {
+  final response2 =  await request.post(url2, {
+    "question":"",
+    "answer": "",
+  });
+}
+
