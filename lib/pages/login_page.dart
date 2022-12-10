@@ -210,7 +210,11 @@ showAlertDialog2(BuildContext context) {
     child: Text("Close"),
     onPressed: () {
       Navigator.push(
+<<<<<<< HEAD
           context, MaterialPageRoute(builder: (context) => MyApp()));
+=======
+          context, MaterialPageRoute(builder: (context) => DaftarProyekPage()));
+>>>>>>> c18c82d827aa7758edda08c69e3b31ec3f640795
     },
   );
 
