@@ -2,7 +2,7 @@ import 'package:pas/models/faq_models.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<List<FaqModel>> fetchToDo() async {
+Future<List<FaqModel>> fetchFAQ() async {
   var url = Uri.parse('https://medsos-umkm.up.railway.app/adminfaq/json/');
   var response = await http.get(
     url,
