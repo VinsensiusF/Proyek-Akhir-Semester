@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pas/pages/editprofile_page.dart';
-// import 'package:pas/utils/utils.dart';
 import 'package:pas/widget/drawer.dart';
 import 'package:pas/function/fetch_profile.dart';
 import 'package:pas/widget/profile_widget.dart';
-
-// import 'package:provider/provider.dart';
-// import 'package:profile/profile.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -16,10 +12,9 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  
   @override
   Widget build(BuildContext context) {
-    String imagePath = 'https://img.icons8.com/bubbles/100/000000/user.png';
-    // final double? minRadius = 40;
     // final request = context.watch<CookieRequest>();
 
     return Scaffold(
@@ -31,9 +26,12 @@ class _ProfilePageState extends State<ProfilePage> {
             future: fetchProfile(),
             // future: fetchProfile(request),
             builder: (context, AsyncSnapshot snapshot) {
+
               if (snapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());
+
               } else {
+
                 if (!snapshot.hasData) {
                   return Column(
                     children: const [
@@ -45,6 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       SizedBox(height: 10),
                     ],
                   );
+
                 } else {
                   return ListView.builder(
                     itemCount: snapshot.data!.length,
@@ -58,34 +57,37 @@ class _ProfilePageState extends State<ProfilePage> {
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [Colors.blue, Colors.white])),
-                          child:
-                           Padding(
+                          child: Padding(
                             padding: const EdgeInsets.fromLTRB(0, 16, 0, 40),
                             child: ProfileWidget(
-                              imagePath: imagePath,
+                              imagePath: getpic(),
                             ),
                           ),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.8,
                           child: ListView(children: <Widget>[
-                            // Container(
-                            //   padding: const EdgeInsets.symmetric(horizontal: 30),
-                            //   child: Column(
-                            //     crossAxisAlignment: CrossAxisAlignment.start,
-                            //     children: const [
-                            //       Text(
-                            //         'Nama',
-                            //         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                            //       ),
-                            //       Text(
-                            //         'Your name will be shown here ...',
-                            //         style: TextStyle(fontSize: 16, height: 2),
-                            //       ),
-                            //       SizedBox(height: 10),
-                            //     ],
-                            //   ),
-                            // ),
+
+                            Padding(
+                              padding: const EdgeInsets.only(right: 30),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  
+                                  FloatingActionButton(
+                                    onPressed: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const EditProfilePage()),
+                                        );
+                                      },
+                                      child: const Icon(Icons.add_a_photo_rounded),
+                                  ),
+                                ],
+                              ),
+                          ),
+
                             Container(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 30),
@@ -95,15 +97,40 @@ class _ProfilePageState extends State<ProfilePage> {
                                   const Text(
                                     'Username',
                                     style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Text(
-                                    // 'Your username will be shown here ...',
-                                    "${snapshot.data![index].fields.username}",
-                                    style: const TextStyle(
-                                        fontSize: 16, height: 2),
+
+                                  Container(
+                                      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                      padding: const EdgeInsets.all(15.0),
+                                      height: 65,
+                                      width: 10000,
+                                      decoration: BoxDecoration(
+                                        color:Colors.white,
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.black,
+                                            blurRadius: 0.7
+                                          )
+                                        ],
+                                      ),
+
+                                  child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                      Text(
+                                        "${snapshot.data![index].fields.username}",
+                                        style: const TextStyle(
+                                          fontSize: 24,
+                                        ),
+                                      ),
+                                    ],
                                   ),
+                                ),
+
                                   const SizedBox(height: 10),
                                 ],
                               ),
@@ -117,42 +144,45 @@ class _ProfilePageState extends State<ProfilePage> {
                                   const Text(
                                     'Email',
                                     style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Text(
-                                    // 'Your email will be shown here ...',
-                                    "${snapshot.data![index].fields.email}",
-                                    style: const TextStyle(
-                                        fontSize: 16, height: 2),
+
+                                  Container(
+                                      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                      padding: const EdgeInsets.all(15.0),
+                                      height: 65,
+                                      width: 10000,
+                                      decoration: BoxDecoration(
+                                        color:Colors.white,
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            color: Colors.black,
+                                            blurRadius: 0.7
+                                          )
+                                        ],
+                                      ),
+
+                                  child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                      Text(
+                                        "${snapshot.data![index].fields.email}",
+                                        style: const TextStyle(
+                                          fontSize: 24,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(height: 10),
+                                ),
+                                  const SizedBox(height: 20),
                                 ],
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                              child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blue,
-                                    shape: const StadiumBorder(),
-                                    onPrimary: Colors.white,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 32, vertical: 12),
-                                  ),
-                                  child: const Text(
-                                    "Edit Profile",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const EditProfilePage()),
-                                    );
-                                  }),
-                            ),
+
+                    
                           ]),
                         ),
                       ],
@@ -163,14 +193,3 @@ class _ProfilePageState extends State<ProfilePage> {
             }));
   }
 }
-
-// Widget imageProfile() {
-//   return Stack(
-//     children: <Widget>[
-//       CircleAvatar(
-//         radius: 80.0,
-//         backgroundImage: ,
-//       )
-//     ]
-//   );
-// }

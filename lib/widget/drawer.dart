@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pas/pages/profile_page.dart';
 import 'package:pas/pages/faq_page.dart';
 import 'package:pas/pages/login_page.dart';
-import 'package:pas/pages/sellerprofile_page.dart';
 
 import '../main.dart';
 
