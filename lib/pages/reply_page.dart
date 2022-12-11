@@ -25,7 +25,7 @@ class _ReplyPageState extends State<ReplyPage> {
       appBar: AppBar(
         title: Text('Forum Diskusi'),
       ),
-      drawer: const Drawers(),
+      //drawer: const Drawers(),
       //judul
       //username | waktu
       //pesan
