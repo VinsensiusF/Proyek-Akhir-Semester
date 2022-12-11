@@ -64,53 +64,56 @@ class _EditPasswordState extends State<EditPasswordPage> {
 
                 Column(
                   children: [
-                
-                TextButton(
-                    child: const Text(
-                      "Save",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue),
-                    ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return Dialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              elevation: 15,
-                              child: Container(
-                                child: ListView(
-                                  padding: const EdgeInsets.only(
-                                      top: 20, bottom: 20),
-                                  shrinkWrap: true,
-                                  children: <Widget>[
-                                    const Center(child: Text('Saved!')),
-                                    const SizedBox(height: 10),
-                                    const Center(child: Text('Your password has successfully changed')),
-                                    const SizedBox(height: 10),
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) => const ProfilePage()),
-                                        );
-                                      },
-                                      child: const Text('Back To Profile'),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                    
+                    const SizedBox(height: 10),
+              
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            // backgroundColor: MaterialStateProperty.all(Colors.blue),
+                            backgroundColor: Colors.blue,
+                            shape: const StadiumBorder(),
+                            onPrimary: Colors.white,
+                          ),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Dialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  elevation: 15,
+                                  child: ListView(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, bottom: 20),
+                                    shrinkWrap: true,
+                                    children: <Widget>[
+                                      const Center(child: Text('Saved!')),
+                                      const SizedBox(height: 10),
+                                      const Center(child: Text('Your password has successfully changed')),
+                                      const SizedBox(height: 10),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) => const ProfilePage()),
+                                          );
+                                        },
+                                        child: const Text('Back To Profile'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             );
-                          },
-                        );
-                      };
-                  })
+                          };
+                      },
+                        child: const Text(
+                          "Save",
+                          style: TextStyle(color: Colors.white),
+                        ))
                   ],
                 )
                 

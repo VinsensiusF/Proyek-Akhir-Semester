@@ -13,7 +13,6 @@ class MyKategoriPage extends StatefulWidget {
     State<MyKategoriPage> createState() => _MyListPageState();
 }
 
-
 class _MyListPageState extends State<MyKategoriPage> {
     @override
     Widget build(BuildContext context) {
