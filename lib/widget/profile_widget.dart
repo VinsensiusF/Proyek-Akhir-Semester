@@ -28,8 +28,8 @@ class ProfileWidget extends StatelessWidget {
         child: Ink.image(
           image: image,
           fit: BoxFit.cover,
-          width: 128,
-          height: 128,
+          width: 150,
+          height: 150,
         ),
       ),
     );

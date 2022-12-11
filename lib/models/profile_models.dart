@@ -104,15 +104,3 @@ class Fields {
     };
 }
 
-
-// class Profile {
-//   final String username;
-//   final String email;
-//   final String password;
-
-//   const Profile({
-//     required this.username,
-//     required this.email,
-//     required this.password,
-//   });
-// }

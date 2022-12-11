@@ -8,7 +8,7 @@ Future<List<Profile>> fetchProfile() async {
 // Future<List<Profile>> fetchProfile(CookieRequest request) async {
   // String uname = request.username;
   // var url = Uri.parse('https://medsos-umkm.up.railway.app/json/$uname');
-  var url = Uri.parse('https://medsos-umkm.up.railway.app/json/halo1');
+  var url = Uri.parse('https://medsos-umkm.up.railway.app/json/Andi123');
   var response = await http.get(
     url,
     headers: {
@@ -17,10 +17,10 @@ Future<List<Profile>> fetchProfile() async {
     },
   );
 
-  // melakukan decode response menjadi bentuk json
+  // Melakukan decode response menjadi bentuk json
   var data = jsonDecode(utf8.decode(response.bodyBytes));
 
-  // melakukan konversi data json menjadi object Kategori
+  // Melakukan konversi data json menjadi object Kategori
   List<Profile> listProfile = [];
   for (var d in data) {
     if (d != null) {
