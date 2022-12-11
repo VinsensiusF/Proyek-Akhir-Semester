@@ -3,6 +3,7 @@ import 'package:pas/widget/drawer.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:pas/models/faq_models.dart';
 import 'dart:convert';
+import 'package:pas/main.dart';
 import 'package:provider/provider.dart';
 import 'package:pas/utils/utils.dart';
 import 'package:http/http.dart' as http;
@@ -19,6 +20,12 @@ class MyFAQPage extends StatefulWidget {
 class _MyFAQPageState extends State<MyFAQPage> {
   final _formKey = GlobalKey<FormState>();
 
+  void updateState() {
+    setState(() {
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
@@ -30,7 +37,7 @@ class _MyFAQPageState extends State<MyFAQPage> {
       drawer: const Drawers(),
       body: Container(
           child: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(30.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -68,7 +75,7 @@ class _MyFAQPageState extends State<MyFAQPage> {
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           itemCount: snapshot.data!.length,
-                          itemBuilder: (_, index) => NullFAQCheck(_, index, snapshot));
+                          itemBuilder: (_, index) => NullFAQCheck(_, index, snapshot, request, context));
                     }
                   }
                 },
@@ -81,21 +88,37 @@ class _MyFAQPageState extends State<MyFAQPage> {
   }
 }
 
-Widget NullFAQCheck(BuildContext _, int index, AsyncSnapshot snapshot) {
+Widget NullFAQCheck(BuildContext _, int index, AsyncSnapshot snapshot, CookieRequest request, BuildContext context)  {
   if (snapshot.data![index].fields.question == "" && snapshot.data![index].fields.answer == "") {
     return Container();
   } else {
     return Padding(
       padding: const EdgeInsets.all(30.0),
-      child: GFAccordion(
-        title: snapshot.data![index].fields.question,
-        content: snapshot.data![index].fields.answer,
-        titleBorder: Border.all(),
-        titlePadding: EdgeInsets.all(18.0),
-        contentPadding: EdgeInsets.all(20.0),
-        titleBorderRadius: BorderRadius.circular(20),
-        collapsedTitleBackgroundColor: Colors.white10,
-      ),
+      child: Column(
+        children: [
+          GFAccordion(
+            title: snapshot.data![index].fields.question,
+            content: snapshot.data![index].fields.answer,
+            titleBorder: Border.all(),
+            titlePadding: EdgeInsets.all(18.0),
+            contentPadding: EdgeInsets.all(20.0),
+            titleBorderRadius: BorderRadius.circular(20),
+            collapsedTitleBackgroundColor: Colors.white10,
+          ),
+          TextButton(
+              onPressed: () async {
+                String url = "https://medsos-umkm.up.railway.app/adminfaq/delete_faq/" + snapshot.data![index].pk.toString() + "/";
+                final response = await request.get(url);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MyFAQPage()
+                  ),
+                );
+              },
+              child: Text("Delete"))
+        ],
+      )
     );
   }
 }
