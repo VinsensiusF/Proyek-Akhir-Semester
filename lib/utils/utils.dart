@@ -58,8 +58,9 @@ class CookieRequest {
 
     print(response.statusCode);
     if (response.statusCode == 200) {
-      //print(json.decode(response.body));
-      // username = json.decode(response.body)['data']['user']['username'];
+      print(json.decode(response.body)['data']);
+      username = json.decode(response.body)['data']['user']['username'];
+      print(username);
       // email = json.decode(response.body)['data']['user']['email'];
       // is_admin = json.decode(response.body)['data']['user']['is_admin'];
       // is_subscribed =
@@ -69,8 +70,6 @@ class CookieRequest {
     } else {
       loggedIn = false;
     }
-
-    print(loggedIn);
     return json.decode(response.body); // Expects and returns JSON request body
   }
 

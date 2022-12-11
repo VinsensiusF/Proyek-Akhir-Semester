@@ -103,6 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: const Drawers(),
       body: Column(
+
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
@@ -119,6 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             index = res;
                           }
                         }
+                        
                         if (index == null) {
                           _explain = "Toko Tidak Ditemukan";
                         } else {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pas/pages/profile_page.dart';
 import 'package:pas/pages/faq_page.dart';
 import 'package:pas/pages/login_page.dart';
+import 'package:pas/pages/sellerprofile_page.dart';
 
 import '../main.dart';
 
@@ -44,7 +45,9 @@ class _DrawerState extends State<Drawers> {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => ProfilePage()),
+                // bikin conditional jika seller/buyer
+                MaterialPageRoute(builder: (context) => const ProfilePage()),
+                // MaterialPageRoute(builder: (context) => const SellerProfilePage()),
               );
             },
           ),

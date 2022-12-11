@@ -135,9 +135,6 @@ class _State extends State<LoginPage> {
                                           url,
                                           _controllerUsername.text,
                                           _controllerPassword.text);
-                                          
-                                      print(_controllerUsername.text);
-                                      print(_controllerPassword.text);
                                       
                                       if (request.loggedIn) {
                                         showAlertDialog2(context);
