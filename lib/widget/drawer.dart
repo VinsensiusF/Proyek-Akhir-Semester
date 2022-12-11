@@ -9,6 +9,9 @@ import '../main.dart';
 import 'package:pas/pages/kategori_page.dart';
 import 'package:pas/pages/forum_page.dart';
 
+import 'package:provider/provider.dart';
+import 'package:pas/utils/utils.dart';
+
 import '../pages/form_toko.dart';
 import '../pages/kategori_details_page.dart';
 
@@ -20,6 +23,7 @@ class Drawers extends StatefulWidget {
 }
 
 class _DrawerState extends State<Drawers> {
+  
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -62,7 +66,7 @@ class _DrawerState extends State<Drawers> {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const ForumPage()),
+                MaterialPageRoute(builder: (context) => ForumPage()),
               );
             },
           ),
