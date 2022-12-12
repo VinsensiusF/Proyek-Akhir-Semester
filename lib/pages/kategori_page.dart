@@ -58,10 +58,14 @@ class _MyListPageState extends State<MyKategoriPage> {
                                         ),
                                       ));
                                 },
-                                leading: Icon(Icons.category),
+                                leading: Image.network(
+                                    snapshot.data![index].fields.file_url,
+                                    width: 60,
+                                    height: 60,
+                                    fit: BoxFit.cover,
+                                  ),
                                 title: Text(snapshot.data![index].fields.nama),
-                                subtitle: Text(
-                                    snapshot.data![index].fields.deskripsi),
+                                subtitle: Text(snapshot.data![index].fields.deskripsi),
                               )),
                         ));
               }
