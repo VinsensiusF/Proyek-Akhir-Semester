@@ -21,6 +21,8 @@ Vinsensius Ferdinando - *2106751221*
 ## Nama Aplikasi  
 :sparkles::sparkles::sparkles: **Seller’s Social Media (SellerPrism.io)** :sparkles::sparkles::sparkles:
 
+[![Build status](https://build.appcenter.ms/v0.1/apps/8a4242bb-8bb6-4252-9bac-e440197e96bb/branches/staging/badge)](https://appcenter.ms)
+
 
 ## Latar Belakang dan Cerita Aplikasi
 
@@ -60,7 +62,7 @@ Fitur ini menampilkan kategori yang ada di aplikasi ini. Kategori ditampilkan be
 
 *(Implementasi Menampilkan Toko akan dikerjakan oleh Amanda Nadhifah Zahra Andini)*
 
-Fitur ini menampilkan seluruh toko yang ada di dalam kategori yang dipilih oleh user. Dengan adanya fitur ini, user dapat menghubungi toko yang dinilai menarik minat membelinya dengan menghubungi kontak toko yang tersedia di setiap card atau pilihan toko.
+Fitur ini menampilkan seluruh toko beserta product yang dijual berdasarkan kategori yang dipilih oleh user. Dengan adanya fitur ini, user dapat melihat deskripsi toko atau product yang dijual. Jika user ingin membeli product, dapat menklik link yang tertera.
 
 ------
 

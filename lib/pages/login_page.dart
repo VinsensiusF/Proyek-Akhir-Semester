@@ -25,7 +25,6 @@ class _State extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-
     final request = context.watch<CookieRequest>();
     return Scaffold(
         appBar: AppBar(

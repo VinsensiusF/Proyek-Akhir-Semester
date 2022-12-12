@@ -59,7 +59,7 @@ class _FormReplyState extends State<FormReply> {
                                   decoration: InputDecoration(
                                       hintText: "Tuliskan pesan Anda di sini",
                                       labelText: "Pesan",
-                                      //icon: const Icon(Icons.),
+                                      icon: const Icon(Icons.message_rounded),
                                       // Menambahkan circular border agar lebih rapi
                                       border: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(5.0),
@@ -99,7 +99,7 @@ class _FormReplyState extends State<FormReply> {
                                   if (_formKey.currentState!.validate()) {
                                     //masih dummy --> fix this
                                     //have to add alert dialog
-                                      String id = '1';//widget.id;
+                                      String id = '45';//widget.id;
                                       submit(context, id);
                                       showDialog(
                                           context: context,

@@ -5,18 +5,20 @@ import 'package:pas/pages/form_forum.dart';
 import 'package:pas/widget/drawer.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'package:pas/utils/utils.dart';
 
 var detailForum = [];
 
 class ForumPage extends StatefulWidget {
-  const ForumPage({Key? key}) : super(key: key);
+    ForumPage({Key? key}) : super(key: key);
 
   @override
   State<ForumPage> createState() => _ForumPageState();
 }
 
 class _ForumPageState extends State<ForumPage> {
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

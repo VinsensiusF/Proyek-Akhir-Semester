@@ -4,9 +4,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:pas/pages/forum_page.dart';
 import 'package:pas/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class FormForum extends StatefulWidget {
-    const FormForum({super.key});
+    FormForum({Key? key}) : super(key: key);
 
     @override
     State<FormForum> createState() => _FormForumState();
@@ -18,21 +19,54 @@ class _FormForumState extends State<FormForum> {
     String _judul = "";
     String _pesan = "";
 
+    CookieRequest request = CookieRequest();
+    String username = "";
+    bool loggedIn = false;
+
+    @override
+    void initState() {
+        super.initState();
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        final _request = Provider.of<CookieRequest>(context, listen: false);
+
+        print("tes");
+
+        if (!_request.loggedIn) {
+            print("tas");
+        } else {
+            setState(() {
+                request = _request;
+                username = _request.username;
+                loggedIn = _request.loggedIn;
+                print("tos");
+                print(username);
+            });
+        }
+        });
+    }
+
     Future<void> submit(BuildContext context, String idUser) async{
-        String id = idUser;
+        String userId = idUser;
         final response = await http.post(
-            Uri.parse('https://medsos-umkm.up.railway.app/forum/add_forum_flutter/'+id),
+            Uri.parse('https://medsos-umkm.up.railway.app/forum/add_forum_flutter/'+userId),
             headers: <String, String>{'Content-Type': 'application/json'},
             body: jsonEncode(<String, dynamic>{
                 'title': _judul,
                 'discussion': _pesan,
-                'id': int.parse(id), 
+                'id': int.parse(userId), 
             })
         );
     }
 
     @override
     Widget build(BuildContext context) {
+        //CookieRequest request = CookieRequest();
+        //final _request = Provider.of<CookieRequest>(context, listen: false);
+        //final request = context.watch<CookieRequest>();
+        //username = request.username;
+        print("---");
+        print(username);
+        print("---");
         return Scaffold(
             appBar: AppBar(
                 title: Text('Tambah Forum'),
@@ -44,6 +78,11 @@ class _FormForumState extends State<FormForum> {
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
                             children: [
+                                //Image.asset(
+                                //    'lib/assets/forum.jpg',
+                                //    width: 400,
+                                //    height: 225,
+                                //),
                                 Padding(
                                     // Menggunakan padding sebesar 8 pixels
                                     padding: const EdgeInsets.all(8.0),
@@ -51,7 +90,7 @@ class _FormForumState extends State<FormForum> {
                                         decoration: InputDecoration(
                                             hintText: "Contoh: Kerja sama UMKM Ice Cream",
                                             labelText: "Judul",
-                                            //icon: const Icon(Icons.),
+                                            icon: const Icon(Icons.title_rounded),
                                             // Menambahkan circular border agar lebih rapi
                                             border: OutlineInputBorder(
                                                 borderRadius: BorderRadius.circular(5.0),
@@ -87,7 +126,7 @@ class _FormForumState extends State<FormForum> {
                                         decoration: InputDecoration(
                                             hintText: "Tuliskan pesan Anda di sini",
                                             labelText: "Pesan",
-                                            //icon: const Icon(Icons.),
+                                            icon: const Icon(Icons.message_rounded),
                                             // Menambahkan circular border agar lebih rapi
                                             border: OutlineInputBorder(
                                                 borderRadius: BorderRadius.circular(5.0),
@@ -126,8 +165,8 @@ class _FormForumState extends State<FormForum> {
                                     onPressed: () {
                                         if (_formKey.currentState!.validate()) {
                                             //masih dummy --? fix this
-                                            String id = '1';//widget.id;
-                                            //String id = CookieRequest.id.toString();
+                                            String id = '45';//widget.id;
+                                            //String id = widget.id;
                                             submit(context, id);
                                             showDialog(
                                                 context: context,
