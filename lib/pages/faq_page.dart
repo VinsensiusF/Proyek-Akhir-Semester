@@ -102,7 +102,6 @@ Widget NullFAQCheck(BuildContext _, int index, AsyncSnapshot snapshot, CookieReq
           ),
           TextButton(
               onPressed: () async {
-                if (request.loggedIn) {
                   String url = "https://medsos-umkm.up.railway.app/adminfaq/delete_faq/" + snapshot.data![index].pk.toString() + "/";
                   final response = await request.get(url);
                   Navigator.push(
@@ -111,9 +110,6 @@ Widget NullFAQCheck(BuildContext _, int index, AsyncSnapshot snapshot, CookieReq
                         builder: (context) => MyFAQPage()
                     ),
                   );
-                } else {
-                  showAlertDelete(context);
-                }
               },
               child: Text("Delete")
           )

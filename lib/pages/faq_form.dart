@@ -126,7 +126,7 @@ class _MyFAQFormState extends State<MyFAQForm> {
                               Colors.white),
                         ),
                         onPressed: () async {
-                          if (_formKey.currentState!.validate() && request.loggedIn) {
+                          if (_formKey.currentState!.validate()) {
                             postDummy(request, url2);
                             Timer(Duration(seconds:3),() async {
                               const url =
@@ -142,8 +142,6 @@ class _MyFAQFormState extends State<MyFAQForm> {
                                 );
                               }
                             });
-                          } else {
-                            showAlertDelete(context);
                           }
                         },
                         child: const Text("Submit")),
