@@ -21,6 +21,8 @@ Vinsensius Ferdinando - *2106751221*
 ## Nama Aplikasi  
 :sparkles::sparkles::sparkles: **Seller’s Social Media (SellerPrism.io)** :sparkles::sparkles::sparkles:
 
+[![Build status](https://build.appcenter.ms/v0.1/apps/8a4242bb-8bb6-4252-9bac-e440197e96bb/branches/staging/badge)](https://appcenter.ms)
+
 
 ## Latar Belakang dan Cerita Aplikasi
 
