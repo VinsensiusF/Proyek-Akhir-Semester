@@ -12,9 +12,6 @@ import 'package:pas/pages/forum_page.dart';
 import 'package:provider/provider.dart';
 import 'package:pas/utils/utils.dart';
 
-import '../pages/form_toko.dart';
-import '../pages/kategori_details_page.dart';
-
 class Drawers extends StatefulWidget {
   const Drawers({Key? key}) : super(key: key);
 
@@ -23,7 +20,6 @@ class Drawers extends StatefulWidget {
 }
 
 class _DrawerState extends State<Drawers> {
-  
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -79,27 +75,6 @@ class _DrawerState extends State<Drawers> {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const MyFAQPage()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('Toko'),
-            onTap: () {
-              // Route menu ke halaman to do
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const MyKategoriDetailPage()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('Form Toko'),
-            onTap: () {
-              // Route menu ke halaman to do
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const TokoForm()),
               );
             },
           ),

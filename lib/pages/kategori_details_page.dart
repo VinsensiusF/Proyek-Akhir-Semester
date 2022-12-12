@@ -1,130 +1,213 @@
 import 'package:flutter/material.dart';
+import 'package:pas/pages/form_toko_baru.dart';
+import 'package:pas/pages/kategori_page.dart';
 import 'package:pas/widget/drawer.dart';
+import 'package:url_launcher/link.dart';
 import 'package:pas/models/models_kategori.dart';
-import 'package:pas/models/models_search_home.dart';
-import 'package:pas/models/models_toko.dart';
+import 'package:pas/models/models_toko_json.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class MyKategoriDetailPage extends StatefulWidget {
-  const MyKategoriDetailPage({super.key});
+class MyKategoriDetailPage extends StatelessWidget {
+  final Kategori kategori;
+  MyKategoriDetailPage({Key? key, required this.kategori});
+
+  List<Toko> list = <Toko>[];
+  List<Toko> nampungkategori = <Toko>[];
 
   @override
-  State<MyKategoriDetailPage> createState() => _MyTokoPageState();
-}
+  Future<List<Toko>> fetchToko() async {
+    var url =
+        Uri.parse('https://medsos-umkm.up.railway.app/addproductjsonall/');
+    var response = await http.get(
+      url,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    );
+    var data = jsonDecode(utf8.decode(response.bodyBytes));
+    // print(data);
 
-class _MyTokoPageState extends State<MyKategoriDetailPage> {
-  bool _visible = false;
-
-  void _toggle() {
-    setState(() {
-      _visible = !_visible;
-    });
+    List<Toko> listToko = [];
+    for (var d in data) {
+      if (d != null) {
+        listToko.add(Toko.fromJson(d));
+        list.add(Toko.fromJson(d));
+      }
+    }
+    return listToko;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Toko'),
-          backgroundColor: Color.fromARGB(255, 146, 161, 235),
-          centerTitle: true,
-        ), //AppBar
+  isikategori(List<Toko> isitoko) {
+    for (var res in isitoko) {
+      if (res.fields.kategoriProduk.toString().toLowerCase() ==
+          kategori.fields.nama.toLowerCase()) {
+        nampungkategori.add(res);
+      }
+    }
+    // print(nampungkategori);
+    return nampungkategori;
+  }
 
-        drawer: const Drawers(),
-        body: SingleChildScrollView(
-            /** Card Widget **/
+  tampilan(List<Toko> card) {
+    // print(card);
+    if (card.isEmpty) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text("Mohon maaf. Belum ada toko dan produk yang tersedia:(")
+        ],
+      );
+    } else {
+      return ListView(children: <Widget>[
+        GestureDetector(
             child: Container(
-                padding: const EdgeInsets.all(15.0),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+                padding: const EdgeInsets.all(25),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 146, 161, 235),
+                  borderRadius: BorderRadius.circular(17.0),
+                  boxShadow: const [
+                    BoxShadow(color: Colors.deepPurple, blurRadius: 3.0)
+                  ],
+                ),
                 child: Column(
-                    children: DataToko.tokoList.isNotEmpty
-                        ? DataToko.tokoList
+                    children: nampungkategori.isNotEmpty
+                        ? nampungkategori
                             .map((toko) => Card(
-                                  elevation: 50,
-                                  shadowColor: Colors.black,
-                                  color: Color.fromARGB(255, 146, 161, 235),
-                                  child: SizedBox(
-                                    width: 350,
-                                    height: 500,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(20.0),
-                                      child: Column(
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundColor: Colors.blue[500],
-                                            radius: 108,
-                                            child: const CircleAvatar(
-                                              backgroundImage: NetworkImage(
-                                                  "https://images.tokopedia.net/img/cache/500-square/VqbcmM/2022/1/16/1abf9771-e4c9-47c8-b77a-95a05fc4bb34.jpg"),
-                                              radius: 100,
-                                            ), //CircleAvatar
-                                          ), //CircleAvatar
-                                          const SizedBox(
-                                            height: 20,
-                                          ), //SizedBox
-                                          Text(
-                                            toko.namatoko,
-                                            // ignore: prefer_const_constructors
-                                            style: TextStyle(
-                                              fontSize: 30,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w500,
-                                            ), //Textstyle
-                                          ), //Text
-                                          const SizedBox(
-                                            height: 10,
-                                          ), //SizedBox
-                                          const SizedBox(
-                                            height: 10,
-                                            width: 120,
-                                          ), //SizedBox
-
-                                          ElevatedButton(
-                                              onPressed: _toggle,
-                                              child:
-                                                  const Text('Lihat Detail')),
-                                          Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 30, right: 30),
-                                                  child: Visibility(
-                                                    // ignore: sort_child_properties_last
-                                                    child: Text(
-                                                      toko.deskripsi,
-                                                      style: const TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 18),
-                                                    ),
-                                                    maintainSize: true,
-                                                    maintainAnimation: true,
-                                                    maintainState: true,
-                                                    visible: _visible,
-                                                  ),
-                                                )
-                                              ]),
-                                        ],
+                                color: Color.fromARGB(255, 205, 225, 234),
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "${toko.fields.namaProduk}",
+                                        style: const TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w800,
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                ))
+                                      CircleAvatar(
+                                        backgroundColor: Colors.blue[500],
+                                        radius: 50,
+                                        backgroundImage: NetworkImage(
+                                            "${toko.fields.gambarProduk}"),
+                                      ),
+                                      Text(
+                                        "${toko.fields.kategoriProduk}",
+                                        style: const TextStyle(
+                                            fontSize: 13.0,
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                      Divider(
+                                        color: Color.fromARGB(255, 72, 47, 141),
+                                        thickness: 1,
+                                      ),
+                                      Text(
+                                        "${toko.fields.deskripsiProduk}",
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 76, 37, 184),
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                      Link(
+                                          target: LinkTarget.blank,
+                                          uri: Uri.parse(
+                                              "${toko.fields.linkProduk}"),
+                                          builder: (context, followLink) =>
+                                              ElevatedButton(
+                                                onPressed: followLink,
+                                                child: Text('Beli di sini'),
+                                              )),
+                                      Text(
+                                        "Rp${toko.fields.hargaProduk}",
+                                        style: const TextStyle(
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    ])))
                             .toList()
                         : [
                             Center(
                                 child: Column(children: const [
                               Text(
-                                "Mohon maaf. Belum ada Toko yang tersedia.",
+                                "Mohon maaf. Belum ada toko dan produk yang tersedia:(",
                                 style: TextStyle(fontSize: 16),
                               ),
                             ]))
-                          ]))));
+                          ])))
+      ]);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Toko'),
+        backgroundColor: Color.fromARGB(255, 146, 161, 235),
+        centerTitle: true,
+      ),
+      drawer: const Drawers(),
+      body: FutureBuilder(
+          future: fetchToko(),
+          builder: (context, AsyncSnapshot snapshot) {
+            if (snapshot.data == null) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              if (!snapshot.hasData) {
+                return Column(
+                  children: const [
+                    Text(
+                      "Tidak ada toko :(",
+                      style: TextStyle(color: Color(0xff59A5D8), fontSize: 20),
+                    ),
+                    SizedBox(height: 10),
+                  ],
+                );
+              } else {
+                isikategori(list);
+                return tampilan(nampungkategori);
+              }
+            }
+          }),
+      floatingActionButton: Padding(
+          padding: const EdgeInsets.fromLTRB(30, 10, 10, 10),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: FloatingActionButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyKategoriPage()),
+                    ),
+                    child: const Icon(Icons.arrow_back_ios),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: FloatingActionButton.extended(
+                    heroTag: "btn2",
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => TokoForm()),
+                    ),
+                    label: const Text('Ayo Jualan'),
+                    icon: const Icon(Icons.add),
+                  ),
+                ),
+              ])),
+    );
   }
 }

@@ -1,11 +1,14 @@
-import 'package:pas/models/models_toko.dart';
+import 'package:pas/models/models_toko_json.dart';
+import 'package:pas/pages/kategori_details_page.dart';
+import 'package:pas/pages/kategori_page.dart';
 import 'package:pas/widget/drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:pas/pages/kategori_details_page.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:pas/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class TokoForm extends StatefulWidget {
-  //final List<Budget> data;
-  //const BudgetForm({Key? key,required this.data,}) : super(key: key);
   const TokoForm({super.key});
 
   @override
@@ -14,17 +17,33 @@ class TokoForm extends StatefulWidget {
 
 class _TokoFormState extends State<TokoForm> {
   final _formKey = GlobalKey<FormState>();
-  String _namatoko = "";
+  String _nama = "";
+  String _kategori = "";
   String _deskripsi = "";
-  String _alamat = "";
-  String _link = "";
-  int _nomor = 0;
+  String _linktoko = "";
+  String _gambar = "";
+  int _harga = 0;
+
+  void submit(
+      request, _nama, _kategori, _deskripsi, _linktoko, _gambar, _harga) async {
+    await request.post(
+        'https://medsos-umkm.up.railway.app/addproduct/create_product_flutter/',
+        {
+          'nama_produk': _nama,
+          'kategori_produk': _kategori,
+          'harga_produk': _harga,
+          'gambar_produk': _gambar,
+          'deskripsi_produk': _deskripsi,
+          'link_produk': _linktoko,
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Form Budget'),
+        title: const Text('Pendaftaran Toko'),
       ),
       // Menambahkan drawer menu
       drawer: const Drawers(),
@@ -41,8 +60,9 @@ class _TokoFormState extends State<TokoForm> {
                   // Form Judul
                   child: TextFormField(
                     decoration: InputDecoration(
-                      hintText: "Contoh: Toko Flutter",
+                      hintText: "Contoh: Toko Jaya",
                       labelText: "Nama Toko",
+                      icon: const Icon(Icons.shop),
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
@@ -51,19 +71,19 @@ class _TokoFormState extends State<TokoForm> {
                     // Menambahkan behavior saat judul diketik
                     onChanged: (String? value) {
                       setState(() {
-                        _alamat = value!;
+                        _nama = value!;
                       });
                     },
                     // Menambahkan behavior saat data disimpan
                     onSaved: (String? value) {
                       setState(() {
-                        _alamat = value!;
+                        _nama = value!;
                       });
                     },
                     // Validator sebagai validasi form
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
-                        return 'Nama toko tidak boleh kosong!';
+                        return 'Pilih kategori!';
                       }
                       return null;
                     },
@@ -75,14 +95,50 @@ class _TokoFormState extends State<TokoForm> {
                   // Form Judul
                   child: TextFormField(
                     decoration: InputDecoration(
-                      hintText: "Contoh: Makanan Enak",
-                      labelText: "Deeskripsi",
+                      hintText: "Contoh: Makanan",
+                      labelText: "Kategori",
+                      icon: const Icon(Icons.category),
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                     ),
-                    // Menambahkan behavior saat judul diketik
+                    // Menambahkan behavior saat diketik
+                    onChanged: (String? value) {
+                      setState(() {
+                        _kategori = value!;
+                      });
+                    },
+                    // Menambahkan behavior saat data disimpan
+                    onSaved: (String? value) {
+                      setState(() {
+                        _kategori = value!;
+                      });
+                    },
+                    // Validator sebagai validasi form
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Pilih kategori!';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  // Menggunakan padding sebesar 8 pixels
+                  padding: const EdgeInsets.all(8.0),
+                  // Form Judul
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Contoh: Rendang enak dan empuk.",
+                      labelText: "Deskripsi",
+                      icon: const Icon(Icons.description),
+                      // Menambahkan circular border agar lebih rapi
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    // Menambahkan behavior saat diketik
                     onChanged: (String? value) {
                       setState(() {
                         _deskripsi = value!;
@@ -109,29 +165,31 @@ class _TokoFormState extends State<TokoForm> {
                   // Form Judul
                   child: TextFormField(
                     decoration: InputDecoration(
-                      hintText: "Contoh: Di Sini",
-                      labelText: "Alamat",
+                      hintText:
+                          "Contoh: https://shopee.co.id/rendangpj?smtt=0.74188324-1670662290.9",
+                      labelText: "Link Toko",
+                      icon: const Icon(Icons.link),
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                     ),
-                    // Menambahkan behavior saat judul diketik
+                    // Menambahkan behavior saat diketik
                     onChanged: (String? value) {
                       setState(() {
-                        _alamat = value!;
+                        _linktoko = value!;
                       });
                     },
                     // Menambahkan behavior saat data disimpan
                     onSaved: (String? value) {
                       setState(() {
-                        _alamat = value!;
+                        _linktoko = value!;
                       });
                     },
                     // Validator sebagai validasi form
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
-                        return 'Alamat tidak boleh kosong!';
+                        return 'Link toko tidak boleh kosong!';
                       }
                       return null;
                     },
@@ -143,29 +201,30 @@ class _TokoFormState extends State<TokoForm> {
                   // Form Judul
                   child: TextFormField(
                     decoration: InputDecoration(
-                      hintText: "Contoh: https",
-                      labelText: "Link Toko",
+                      hintText: "Gambar terkait toko",
+                      labelText: "Link Gambar",
+                      icon: const Icon(Icons.picture_in_picture),
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                     ),
-                    // Menambahkan behavior saat judul diketik
+                    // Menambahkan behavior saat diketik
                     onChanged: (String? value) {
                       setState(() {
-                        _link = value!;
+                        _gambar = value!;
                       });
                     },
                     // Menambahkan behavior saat data disimpan
                     onSaved: (String? value) {
                       setState(() {
-                        _link = value!;
+                        _gambar = value!;
                       });
                     },
                     // Validator sebagai validasi form
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
-                        return 'Link Toko tidak boleh kosong!';
+                        return 'Gambar harus diisi!';
                       }
                       return null;
                     },
@@ -178,29 +237,30 @@ class _TokoFormState extends State<TokoForm> {
                   // Form Nominal
                   child: TextFormField(
                     decoration: InputDecoration(
-                      hintText: "Contoh: 081234567891",
-                      labelText: "Kontak",
+                      hintText: "Contoh: 100000",
+                      labelText: "Harga",
+                      icon: const Icon(Icons.price_change),
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                     ),
-                    // Menambahkan behavior saat judul diketik
+                    // Menambahkan behavior saat diketik
                     onChanged: (String? value) {
                       setState(() {
-                        _nomor = int.parse(value!);
+                        _harga = int.parse(value!);
                       });
                     },
                     // Menambahkan behavior saat data disimpan
                     onSaved: (String? value) {
                       setState(() {
-                        _nomor = int.parse(value!);
+                        _harga = int.parse(value!);
                       });
                     },
                     // Validator sebagai validasi form
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
-                        return 'Kontak tidak boleh kosong!';
+                        return 'Isi harga produk!!';
                       }
                       return null;
                     },
@@ -209,29 +269,24 @@ class _TokoFormState extends State<TokoForm> {
 
                 // Save button
                 TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      DataToko.tambahToko(
-                          namatoko: _namatoko,
-                          deskripsi: _deskripsi,
-                          alamat: _alamat,
-                          nomor: _nomor,
-                          link: _link);
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MyKategoriDetailPage()),
-                      );
-                    }
-                  },
-                  child: const Text(
-                    "Simpan",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
+                    child: const Text(
+                      "Simpan",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        submit(request, _nama, _kategori, _deskripsi, _linktoko,
+                            _gambar, _harga.toString());
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MyKategoriPage()),
+                        );
+                      }
+                    })
               ],
             ),
           ),
