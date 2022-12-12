@@ -30,7 +30,7 @@ Secara garis besar, aplikasi yang kami kerjakan merupakan sebuah media sosial ya
 
 Untuk mempertemukan pembeli dan penjual yang cocok atau sesuai dengan kriteria barang yang dibeli, maka terdapat fitur pemisahan toko berdasarkan kategori yang ada. Dengan begitu, pembeli dapat memilih toko yang ingin mereka hubungi berdasarkan kebutuhan dan barang yang ingin dibeli.
 
-Dalam aplikasi ini, hanya terdapat dua peran pengguna. Pertama, pengguna yang berperan sebagai pembeli. Pengguna yang berperan sebagai pembeli hanya dapat melihat toko yang ada di masing-masing kategori. Kedua, user yang bertindak sebagai penjual yang dapat mengganti profil yang ia miliki guna mengubah kontak atau nama toko milik mereka yang ditampilkan pada page masing-masing kategori. Seluruh user yang mengakses aplikasi diharuskan untuk sign in terlebih dahulu guna mendapatkan role yang dimiliki.
+Dalam aplikasi ini, hanya terdapat dua peran pengguna. Pertama, pengguna yang berperan sebagai pembeli. Pengguna yang berperan sebagai pembeli hanya dapat melihat toko yang ada di masing-masing kategori. Kedua, user yang bertindak sebagai penjual dapat menambahkan produk yang mereka jual dan ditampilkan pada page masing-masing kategori. Seluruh user yang mengakses aplikasi diharuskan untuk sign in terlebih dahulu guna mendapatkan role yang dimiliki.
 
 
 ## Daftar Fitur
@@ -68,9 +68,9 @@ Fitur ini menampilkan seluruh toko beserta product yang dijual berdasarkan kateg
 
 :smile::smile::smile: **Mengubah Profile** :smile::smile::smile:  
 
-*(Implementasi Mengubah Profile akan dikerjakan oleh Caroline Esther Ulibasa Panggabean)*
+*(Implementasi Profile Page akan dikerjakan oleh Caroline Esther Ulibasa Panggabean)*
 
-Fitur ini mengubah profil dari user yang sedang login. Fitur ini dapat dilihat implementasinya dengan lebih jelas pada saat user yang sedang login merupakan penjual karena perubahan nama toko atau kontak yang dapat dihubungi dapat terlihat dengan jelas.
+Fitur ini menunjukkan profil dari user yang sedang login. Pada fitur ini, user dapat melihat data pribadinya, seperti username dan email. Selain itu, user juga dapat mengubah foto profilnya.
 
 ------
 
