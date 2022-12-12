@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pas/widget/drawer.dart';
+import 'package:pas/pages/login_page.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:pas/models/faq_models.dart';
 import 'dart:convert';
@@ -19,12 +20,6 @@ class MyFAQPage extends StatefulWidget {
 
 class _MyFAQPageState extends State<MyFAQPage> {
   final _formKey = GlobalKey<FormState>();
-
-  void updateState() {
-    setState(() {
-
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,16 +102,21 @@ Widget NullFAQCheck(BuildContext _, int index, AsyncSnapshot snapshot, CookieReq
           ),
           TextButton(
               onPressed: () async {
-                String url = "https://medsos-umkm.up.railway.app/adminfaq/delete_faq/" + snapshot.data![index].pk.toString() + "/";
-                final response = await request.get(url);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MyFAQPage()
-                  ),
-                );
+                if (request.loggedIn) {
+                  String url = "https://medsos-umkm.up.railway.app/adminfaq/delete_faq/" + snapshot.data![index].pk.toString() + "/";
+                  final response = await request.get(url);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MyFAQPage()
+                    ),
+                  );
+                } else {
+                  showAlertDelete(context);
+                }
               },
-              child: Text("Delete"))
+              child: Text("Delete")
+          )
         ],
       )
     );

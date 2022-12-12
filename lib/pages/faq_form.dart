@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:pas/utils/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:pas/pages/faq_page.dart';
+import 'package:pas/function/fetch_faq.dart';
 
 class MyFAQForm extends StatefulWidget {
   const MyFAQForm({super.key});
@@ -28,7 +29,6 @@ class _MyFAQFormState extends State<MyFAQForm> {
       count++;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +126,7 @@ class _MyFAQFormState extends State<MyFAQForm> {
                               Colors.white),
                         ),
                         onPressed: () async {
-                          if (_formKey.currentState!.validate()) {
+                          if (_formKey.currentState!.validate() && request.loggedIn) {
                             postDummy(request, url2);
                             Timer(Duration(seconds:3),() async {
                               const url =
@@ -142,6 +142,8 @@ class _MyFAQFormState extends State<MyFAQForm> {
                                 );
                               }
                             });
+                          } else {
+                            showAlertDelete(context);
                           }
                         },
                         child: const Text("Submit")),
@@ -183,3 +185,4 @@ void postDummy(CookieRequest request, String url2) async {
     "answer": "",
   });
 }
+
